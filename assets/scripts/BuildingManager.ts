@@ -1,13 +1,14 @@
 
-import { _decorator, Component, Node, JsonAsset } from 'cc';
+import { _decorator, Component, Node, JsonAsset, assetManager, Prefab, path } from 'cc';
 import { Building } from './Building';
 import { Bridge } from './Bridge';
+import { BuildingPoint } from './BuildingPoint';
 const { ccclass, property } = _decorator;
 
 @ccclass('BuildingManager')
 export class BuildingManager extends Component {
     @property({type: JsonAsset}) sequence: JsonAsset
-    @property({type: [Building]}) buildings: Array<Building> = []
+    @property({type: [BuildingPoint]}) buildingPoints: Array<BuildingPoint> = []
     private choiceCount: number = 0
     private lastDate: string = ""
     public static Instance: BuildingManager
@@ -38,11 +39,9 @@ export class BuildingManager extends Component {
             }
             st += read.sequence[c]
         }
-        this.buildings.forEach(building => {
-            if(!hasSave){
-                console.log(sequenceNames[this.choiceCount] + " " + building.node.name)
-                building.initNoSave(building.node.name == sequenceNames[this.choiceCount])
-            }
+        this.buildingPoints.forEach(point => {
+            if(!hasSave)
+                point.init("0-1",point.node.name == sequenceNames[this.choiceCount])
         });
     }
     public madeChoise(){

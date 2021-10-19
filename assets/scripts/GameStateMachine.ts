@@ -47,7 +47,9 @@ export class GameStateMachine extends Component {
     }
     //animationState
     private animationStateEnter(){}
-    private animationStateExit(){}
+    private animationStateExit(){
+        this.stateMachine.setState("idleState")
+    }
     //choiseState
     private choiseStateEnter(){}
     public madeChoise(){
