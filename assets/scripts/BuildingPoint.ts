@@ -2,6 +2,7 @@
 import { _decorator, Component, Node, assetManager, instantiate, Vec3, tween, UIOpacity } from 'cc';
 import { Building } from './Building';
 import { ChoiceManage } from './ChoiceManage';
+import { SoundManager } from './SoundManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('BuildingPoint')
@@ -9,17 +10,26 @@ export class BuildingPoint extends Component {
     private choiceCount: number = 0
     private choiceOption: number = 0
 
-    public build(st: string, isCurrentBuilding: boolean){
+
+    public build(st: string){
         tween(this.node.children[0].children[0].getComponent(UIOpacity))
         .call(() => {
             this.node.children[0].children[0].getComponent(Building).fadeOut()
         })
         .delay(1)
         .call(() => {
-            this.init(st, isCurrentBuilding)
+            this.init(st, false, true)
         })
         .start()
-        return
+        tween(this)
+        .call(() => {
+            SoundManager.Instance.setSound("island_construct1", this.node)
+        })
+        .delay(1)
+        .call(() => {
+            SoundManager.Instance.setSound("island_construct2", this.node)
+        })
+        .start()
     }
 
     public init(st: string, isCurrentBuilding: boolean, build: boolean = false){
@@ -41,11 +51,18 @@ export class BuildingPoint extends Component {
                 let building: Node = instantiate(asset)
                 building.parent = this.node.children[0]
                 building.position = new Vec3(0,0,0)
-                building.getComponent(Building).init(isCurrentBuilding, this, build)
+                if(building.getComponent(Building))
+                    building.getComponent(Building).init(isCurrentBuilding, this, build)
             })
         });
     }
+    public setNextMarker(){
+        this.node.children[0].children[0].getComponent(Building).setNextMarker()
+    }
     public setChoice(){
-        ChoiceManage.Instance.createChoice(this.node.name, this.choiceCount + 1, this)
+        ChoiceManage.Instance.createChoice(this.node.name, this)
+    }
+    public getCount(): number{
+        return this.choiceCount
     }
 }

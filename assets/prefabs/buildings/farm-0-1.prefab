@@ -12,7 +12,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "house-0-1",
+    "_name": "farm-0-1",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -194,7 +194,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "07QMd0h1dLcYd/vjigaip6"
+    "fileId": "f8n64+sy9LIrYsN0t/VVWq"
   },
   {
     "__type__": "cc.Label",
@@ -238,7 +238,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "ee3IZdy2dLIaAWpjI7P0FL"
+    "fileId": "cd42rd+U9BjIPn7GRxMReW"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -248,7 +248,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "bc7kReOshGDrsN/kIjeqIB"
+    "fileId": "dekZNnWwNL0p8JhvdhLfjJ"
   },
   {
     "__type__": "cc.UITransform",
@@ -275,7 +275,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "98TYGMtwRBTYZZn4EZmhzJ"
+    "fileId": "2ckhzfOuRA3ZYAjVhMAWvI"
   },
   {
     "__type__": "cc.Sprite",
@@ -320,7 +320,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "77BcV1zfNHo4LI4KRqZupe"
+    "fileId": "24/9tihJVABpW2Tec0uPUe"
   },
   {
     "__type__": "cc.Button",
@@ -393,7 +393,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "2fOwBXUwBNvaJ4NyyrOq4C"
+    "fileId": "cdA6RaOQVDXoIsAwRHOb4r"
   },
   {
     "__type__": "cc.ClickEvent",
@@ -413,7 +413,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "8ehElO57RPJIsdOL16ZRux"
+    "fileId": "cbytaVh9ROL53MvyVRMUFD"
   },
   {
     "__type__": "cc.UITransform",
@@ -428,8 +428,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 492,
-      "height": 292
+      "width": 480,
+      "height": 177
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -440,7 +440,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "f7NISe7HdAD68SLfhnddy8"
+    "fileId": "ceyxqoTKFOCrofpKCloQb6"
   },
   {
     "__type__": "cc.Sprite",
@@ -465,7 +465,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "d81b6a8b-9948-420a-809e-7ed13a60f310@f9941",
+      "__uuid__": "e5a30874-a623-4cf8-81f9-65646d9d4024@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
@@ -485,7 +485,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "e71ctEmpxFC4KlSYRZNz/a"
+    "fileId": "06f+6mdyNNu4Ws0pmtPxBp"
   },
   {
     "__type__": "4716a2rHPBJl4k/8oG8hCzj",
@@ -515,7 +515,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "e4eA36++5ERaEm/EmTSNB7"
+    "fileId": "6dxKdKT5pO2qmbU2HyVmd7"
   },
   {
     "__type__": "cc.UIOpacity",
@@ -533,7 +533,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "3drKE5VX5GhI6R0VkuWIg/"
+    "fileId": "77OO0LQedHF6dN6Xe+cWT+"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -543,6 +543,6 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "518M3u9a1FvqnoCVCrLbPD"
+    "fileId": "6byZ0sjmRDJrAXDCQUiOax"
   }
 ]
