@@ -10,7 +10,9 @@ export class Building extends Component {
     @property({type: Node}) buildButton: Node
     @property({type: Prefab}) tapParticles: Prefab
     @property({type: Prefab}) buildParticles: Prefab
-
+    @property({type: Node}) Zebra: Node = null
+    @property({type: Node}) ZebraEndTarget: Node
+    private ZebraStartPos: Vec3
 
     private point: BuildingPoint
 
@@ -22,6 +24,18 @@ export class Building extends Component {
         if(!GameStateMachine.Instance.stateMachine.isCurrentState("idleState"))
             return
         GameStateMachine.Instance.stateMachine.exitState("animationState")
+        if(this.Zebra != null){
+            this.ZebraStartPos = new Vec3(this.Zebra.position)
+            this.Zebra.scale = new Vec3(0,0,0)
+            tween(this.Zebra)
+            .to(0.5, {worldPosition: this.ZebraEndTarget.worldPosition, scale: new Vec3(1,1,1)})
+            .delay(1)
+            .to(0.5, {position: this.ZebraStartPos})
+            .call(() => {
+                GameStateMachine.Instance.stateMachine.exitState()
+            })
+            .start()
+        }
         tween(this.node)
         .call(() => {
             let prt: Node = instantiate(this.tapParticles)
@@ -31,9 +45,6 @@ export class Building extends Component {
         })
         .by(0.5, {scale: new Vec3(0.1, 0.1, 0.1)}, {easing: 'bounceIn'})
         .by(0.5, {scale: new Vec3(-0.1, -0.1, -0.1)}, {easing: 'bounceOut'})
-        .call(() => {
-            GameStateMachine.Instance.stateMachine.exitState()
-        })
         .start()
     }
 
