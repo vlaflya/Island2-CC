@@ -47,10 +47,12 @@ export class BuildingPoint extends Component {
         let bundle
         assetManager.loadBundle('Buildings', (err, load) => {
             bundle = load
+            console.log(this.node.name + "-" + st);
             bundle.load(this.node.name + "-" + st, (err, asset) =>{
                 let building: Node = instantiate(asset)
+                // console.log(building.name);
                 building.parent = this.node.children[0]
-                building.position = new Vec3(0,0,0)
+                // building.worldPosition = new Vec3(100,100,0)
                 if(building.getComponent(Building))
                     building.getComponent(Building).init(isCurrentBuilding, this, build)
             })
