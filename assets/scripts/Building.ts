@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, sp, loader, assetManager, Sprite, ImageAsset, SpriteFrame, resources, Prefab, tween, instantiate, Vec3, Color, UIOpacity, Button, EventTouch, Touch, UITransform } from 'cc';
+import { _decorator, Component, Node, sp, loader, assetManager, Sprite, ImageAsset, SpriteFrame, resources, Prefab, tween, instantiate, Vec3, Color, UIOpacity, Button, EventTouch, Touch, UITransform, EventHandler } from 'cc';
 import { GameStateMachine } from './GameStateMachine';
 import { ChoiceManage } from './ChoiceManage';
 import { BuildingPoint } from './BuildingPoint';
@@ -63,8 +63,14 @@ export class Building extends Component {
 
     public init(isCurrentBuilding: boolean, point: BuildingPoint, build: boolean = false){
         this.point = point
+        this.buildButton = this.node.getChildByName("Marker")
         if(isCurrentBuilding){
             this.buildButton.active = true
+            let event: EventHandler = new EventHandler()
+            event.target = this.node
+            event.component = "Building"
+            event.handler = "setChoice"
+            this.buildButton.getComponent(Button).clickEvents[0] = event
             this.buildButton.getComponent(Button).interactable = true
         }
         else
