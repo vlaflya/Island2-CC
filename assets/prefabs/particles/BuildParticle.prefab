@@ -135,7 +135,7 @@
       "x": 0,
       "y": 0
     },
-    "speed": 5,
+    "speed": 18,
     "speedVar": 0,
     "tangentialAccel": 0,
     "tangentialAccelVar": 0,
@@ -150,10 +150,11 @@
     "rotatePerSVar": 0,
     "playOnLoad": true,
     "autoRemoveOnFinish": true,
+    "_preview": true,
     "preview": true,
     "_custom": false,
     "_file": {
-      "__uuid__": "7e1a35b9-2b16-4227-947c-2a43fc112fab",
+      "__uuid__": "1f1a0a12-2cbe-48c4-83ea-c30eb9bdea44",
       "__expectedType__": "cc.ParticleAsset"
     },
     "_spriteFrame": null,
@@ -174,9 +175,9 @@
     },
     "_endColor": {
       "__type__": "cc.Color",
-      "r": 151,
-      "g": 52,
-      "b": 139,
+      "r": 132,
+      "g": 40,
+      "b": 136,
       "a": 38
     },
     "_endColorVar": {

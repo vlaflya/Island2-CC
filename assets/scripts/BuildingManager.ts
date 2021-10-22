@@ -3,6 +3,7 @@ import { _decorator, Component, Node, JsonAsset, assetManager, Prefab, path } fr
 import { Building } from './Building';
 import { Bridge } from './Bridge';
 import { BuildingPoint } from './BuildingPoint';
+import { ChoiceManage } from './ChoiceManage';
 const { ccclass, property } = _decorator;
 
 @ccclass('BuildingManager')
@@ -12,6 +13,7 @@ export class BuildingManager extends Component {
     private choiceCount: number = 0
     private lastDate: string = ""
     public static Instance: BuildingManager
+    private sequenceNames: Array<String> = []
 
     onLoad(){
         BuildingManager.Instance = this
@@ -29,25 +31,40 @@ export class BuildingManager extends Component {
         }
 
         let read: readBuildings = JSON.parse(JSON.stringify(this.sequence.json))
-        let sequenceNames: Array<String> = []
         let st: string = ""
-        for(let c = 0; c < read.sequence.length; c++){
-            if(read.sequence[c] == ","){
-                sequenceNames.push(st)
-                st = ""
-                continue
+        if(this.sequenceNames.length == 0){
+            for(let c = 0; c < read.sequence.length; c++){
+                if(read.sequence[c] == ","){
+                    this.sequenceNames.push(st)
+                    st = ""
+                    continue
+                }
+                st += read.sequence[c]
             }
-            st += read.sequence[c]
+            this.sequenceNames.push(st)
         }
+        if(this.choiceCount == this.sequenceNames.length)
+            return
+        console.log(this.sequenceNames[this.choiceCount])
         this.buildingPoints.forEach(point => {
             if(!hasSave)
-                point.init("0-1",point.node.name == sequenceNames[this.choiceCount])
+                point.init("0-1",point.node.name == this.sequenceNames[this.choiceCount])
+            if(point.node.name == this.sequenceNames[this.choiceCount])
+                ChoiceManage.Instance.preload(point.node.name, point.getCount() + 1)
         });
     }
     public madeChoise(){
         var today = new Date();
         this.lastDate = today.toString()
         this.choiceCount++
+    }
+    public setNextMarker(){
+        if(this.choiceCount == this.sequenceNames.length)
+            return
+        this.buildingPoints.forEach(point => {
+            if(point.node.name == this.sequenceNames[this.choiceCount])
+                point.setNextMarker()
+        });
     }
 }
 interface readBuildings{
