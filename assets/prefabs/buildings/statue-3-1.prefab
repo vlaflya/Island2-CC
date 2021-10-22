@@ -12,7 +12,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "satue-3-1",
+    "_name": "statue-3-1",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -558,8 +558,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 557,
-      "height": 163
+      "width": 300,
+      "height": 400
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",

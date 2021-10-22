@@ -2,12 +2,12 @@
   "ver": "1.1.32",
   "importer": "prefab",
   "imported": true,
-  "uuid": "d963ab14-7a90-4c8e-a6c7-79b95d19f5fa",
+  "uuid": "12a0c415-0854-434b-8039-f23e5ce2a4c5",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "syncNodeName": "satue-0-1"
+    "syncNodeName": "victory_effect1"
   }
 }

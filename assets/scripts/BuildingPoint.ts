@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, assetManager, instantiate, Vec3, tween, UIOpacity } from 'cc';
+import { _decorator, Component, Node, assetManager, instantiate, Vec3, tween, UIOpacity, Prefab } from 'cc';
 import { Building } from './Building';
 import { ChoiceManage } from './ChoiceManage';
 import { SoundManager } from './SoundManager';
@@ -10,7 +10,6 @@ export class BuildingPoint extends Component {
     private choiceCount: number = 0
     private choiceOption: number = 0
 
-
     public build(st: string){
         tween(this.node.children[0].children[0].getComponent(UIOpacity))
         .call(() => {
@@ -19,15 +18,6 @@ export class BuildingPoint extends Component {
         .delay(1)
         .call(() => {
             this.init(st, false, true)
-        })
-        .start()
-        tween(this)
-        .call(() => {
-            SoundManager.Instance.setSound("island_construct1", this.node)
-        })
-        .delay(1)
-        .call(() => {
-            SoundManager.Instance.setSound("island_construct2", this.node)
         })
         .start()
     }
@@ -47,7 +37,6 @@ export class BuildingPoint extends Component {
         let bundle
         assetManager.loadBundle('Buildings', (err, load) => {
             bundle = load
-            console.log(this.node.name + "-" + st);
             bundle.load(this.node.name + "-" + st, (err, asset) =>{
                 let building: Node = instantiate(asset)
                 // console.log(building.name);

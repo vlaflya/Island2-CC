@@ -45,6 +45,7 @@ export class BuildingManager extends Component {
         }
         if(this.choiceCount == this.sequenceNames.length)
             return
+        console.log(this.sequenceNames[this.choiceCount])
         this.buildingPoints.forEach(point => {
             if(!hasSave)
                 point.init("0-1",point.node.name == this.sequenceNames[this.choiceCount])

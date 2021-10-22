@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, Sprite, assetManager, SpriteFrame, builtinResMgr, path, instantiate, Vec3, AudioClip, AudioSource, tween, AssetManager, Prefab } from 'cc';
+import { _decorator, Component, Node, Sprite, assetManager, SpriteFrame, builtinResMgr, path, instantiate, Vec3, AudioClip, AudioSource, tween, AssetManager, Prefab, UITransform, Vec2 } from 'cc';
 import { Building } from './Building';
 import { GameStateMachine } from './GameStateMachine';
 import { BuildingManager } from './BuildingManager';
@@ -11,8 +11,8 @@ const { ccclass, property } = _decorator;
 export class ChoiceManage extends Component {
     public static Instance: ChoiceManage
     @property({type: Node}) selectWindow: Node
-    @property({type: Sprite}) option1: Sprite
-    @property({type: Sprite}) option2: Sprite
+    @property({type: UITransform}) option1: UITransform
+    @property({type: UITransform}) option2: UITransform
 
     private currentPoint: BuildingPoint
     private optionCount: number = 0
@@ -51,6 +51,14 @@ export class ChoiceManage extends Component {
             building.parent = parent
             building.position = new Vec3(0,0,0)
             building.getComponent(Building).init(false, this.currentPoint)
+            building.scale = new Vec3(1,1,1)
+            let transform = building.getChildByName("visuals").getComponent(UITransform)
+            let ratio = transform.width / transform.height
+            let vec: Vec2 = new Vec2(parent.getComponent(UITransform).width)
+            transform.node.position = new Vec3(0,0,0)
+            vec.y = vec.x / ratio
+            transform.width = vec.x
+            transform.height = vec.y
         })
     }
     public makeChoice1(){

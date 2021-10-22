@@ -1,9 +1,11 @@
 
-import { _decorator, Component, Node, sp, loader, assetManager, Sprite, ImageAsset, SpriteFrame, resources, Prefab, tween, instantiate, Vec3, Color, UIOpacity, Button } from 'cc';
+import { _decorator, Component, Node, sp, loader, assetManager, Sprite, ImageAsset, SpriteFrame, resources, Prefab, tween, instantiate, Vec3, Color, UIOpacity, Button, EventTouch, Touch, UITransform } from 'cc';
 import { GameStateMachine } from './GameStateMachine';
 import { ChoiceManage } from './ChoiceManage';
 import { BuildingPoint } from './BuildingPoint';
 import { BuildingManager } from './BuildingManager';
+import { ParticleManager } from './ParticleManager';
+import { SoundManager } from './SoundManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('Building')
@@ -22,7 +24,7 @@ export class Building extends Component {
         this.node.on(Node.EventType.TOUCH_START, this.animate, this)
     }
 
-    private animate(){
+    private animate(touch: Touch, event: EventTouch){
         if(!this.interactable)
             return
         if(!GameStateMachine.Instance.stateMachine.isCurrentState("idleState"))
@@ -33,7 +35,8 @@ export class Building extends Component {
         .call(() => {
             let prt: Node = instantiate(this.tapParticles)
             prt.parent = this.node
-            prt.position = new Vec3(0,0,0)
+            let pos = new Vec3(touch.getUILocation().x, touch.getUILocation().y, 0)
+            prt.worldPosition = pos
             console.log(prt.name);
         })
         .by(0.1, {scale: new Vec3(-0.05, -0.05, -0.05)}, {easing: 'bounceIn'})
@@ -77,15 +80,17 @@ export class Building extends Component {
     }
     public fadeIn(){
         this.node.getComponent(UIOpacity).opacity = 255
+        
         tween(this.node.getComponent(UIOpacity))
         .to(1, {opacity: 255})
         .call(() => {
-            console.log("oke1")
+            ParticleManager.Instance.setParticlesAfterBuild(this.node.getComponent(UITransform))
             BuildingManager.Instance.setNextMarker()
         })
         .start()
     }
     public fadeOut(){
+        SoundManager.Instance.setSound("island_construct2", this.node.parent)
         let prt: Node = instantiate(this.buildParticles)
         prt.parent = this.node.parent.parent.children[1]
         console.log(prt.parent.name)
