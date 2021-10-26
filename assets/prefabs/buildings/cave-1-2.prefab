@@ -332,7 +332,7 @@
     "propertyPath": [
       "_layer"
     ],
-    "value": 33554432
+    "value": 1073741824
   },
   {
     "__type__": "cc.UITransform",
