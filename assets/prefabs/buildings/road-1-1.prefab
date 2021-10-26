@@ -88,8 +88,8 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 429.166,
-      "y": -62.494,
+      "x": 420.732,
+      "y": -68.82,
       "z": 0
     },
     "_lrot": {
@@ -169,7 +169,7 @@
     },
     "_type": 0,
     "_fillType": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -355,6 +355,8 @@
       "__expectedType__": "cc.Prefab"
     },
     "Zebra": null,
+    "shortPhrase": null,
+    "longPhrase": null,
     "_id": ""
   },
   {

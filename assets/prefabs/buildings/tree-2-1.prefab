@@ -252,7 +252,7 @@
       "_spriteFrame"
     ],
     "value": {
-      "__uuid__": "ddb175ce-0b3a-4ba6-86f6-58a63360b51f@f9941",
+      "__uuid__": "bf436217-d5f8-42b8-b043-1bd17339c5e7@f9941",
       "__expectedType__": "cc.SpriteFrame"
     }
   },
@@ -272,8 +272,8 @@
     ],
     "value": {
       "__type__": "cc.Size",
-      "width": 492,
-      "height": 292
+      "width": 341,
+      "height": 346
     }
   },
   {
@@ -292,8 +292,8 @@
     ],
     "value": {
       "__type__": "cc.Vec3",
-      "x": -4.564,
-      "y": -37.958,
+      "x": 12.306,
+      "y": 84.348,
       "z": 0
     }
   },
@@ -313,8 +313,8 @@
     ],
     "value": {
       "__type__": "cc.Vec3",
-      "x": -138.832,
-      "y": -5.366,
+      "x": -35.504,
+      "y": 194.964,
       "z": 0
     }
   },
@@ -332,7 +332,7 @@
     "propertyPath": [
       "_active"
     ],
-    "value": false
+    "value": true
   },
   {
     "__type__": "cc.UITransform",
@@ -492,8 +492,8 @@
     ],
     "value": {
       "__type__": "cc.Vec3",
-      "x": 80.008,
-      "y": -91.086,
+      "x": -27.538,
+      "y": -48.912,
       "z": 0
     }
   },

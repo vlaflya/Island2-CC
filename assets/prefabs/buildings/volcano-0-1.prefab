@@ -272,8 +272,8 @@
     ],
     "value": {
       "__type__": "cc.Vec3",
-      "x": -47.21,
-      "y": -131.94,
+      "x": 11.834,
+      "y": -121.396,
       "z": 0
     }
   },
@@ -358,6 +358,8 @@
     },
     "Zebra": null,
     "ZebraEndTarget": null,
+    "shortPhrase": null,
+    "longPhrase": null,
     "_id": ""
   },
   {
