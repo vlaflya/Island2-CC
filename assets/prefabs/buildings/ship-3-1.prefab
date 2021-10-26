@@ -23,7 +23,7 @@
         "__id__": 26
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 34
@@ -505,8 +505,8 @@
     ],
     "value": {
       "__type__": "cc.Vec3",
-      "x": 30.06,
-      "y": 76.826,
+      "x": 143.932,
+      "y": 106.348,
       "z": 0
     }
   },
@@ -590,6 +590,8 @@
       "__expectedType__": "cc.Prefab"
     },
     "Zebra": null,
+    "shortPhrase": null,
+    "longPhrase": null,
     "_id": ""
   },
   {
