@@ -1,167 +1,167 @@
 
 All-Leg-Zebra.png
-size: 1024,512
+size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 2legs/Blik
   rotate: false
-  xy: 184, 9
-  size: 13, 13
-  orig: 13, 13
+  xy: 129, 27
+  size: 20, 20
+  orig: 20, 20
   offset: 0, 0
   index: -1
 2legs/Body
-  rotate: true
-  xy: 8, 213
-  size: 291, 516
-  orig: 293, 517
+  rotate: false
+  xy: 4, 242
+  size: 436, 775
+  orig: 439, 776
   offset: 0, 1
   index: -1
 2legs/Brow-L-01
-  rotate: false
-  xy: 304, 88
-  size: 54, 39
-  orig: 54, 39
+  rotate: true
+  xy: 444, 392
+  size: 81, 58
+  orig: 81, 59
   offset: 0, 0
   index: -1
 2legs/Ear-L-01
-  rotate: true
-  xy: 584, 161
-  size: 102, 101
-  orig: 106, 105
-  offset: 2, 2
+  rotate: false
+  xy: 4, 86
+  size: 153, 152
+  orig: 159, 158
+  offset: 3, 3
   index: -1
 2legs/Eye-L-01
   rotate: false
-  xy: 686, 73
-  size: 80, 80
-  orig: 80, 80
+  xy: 588, 353
+  size: 120, 120
+  orig: 120, 120
   offset: 0, 0
   index: -1
 2legs/Hand-L-01
-  rotate: true
-  xy: 8, 19
-  size: 49, 168
-  orig: 50, 171
-  offset: 1, 1
+  rotate: false
+  xy: 512, 221
+  size: 72, 252
+  orig: 76, 257
+  offset: 2, 1
   index: -1
 2legs/Hand-L-02
   rotate: true
-  xy: 584, 71
-  size: 82, 94
-  orig: 82, 94
+  xy: 368, 115
+  size: 123, 140
+  orig: 123, 140
   offset: 0, 0
   index: -1
 2legs/Hand-R-03
-  rotate: false
-  xy: 493, 70
-  size: 83, 135
-  orig: 83, 135
+  rotate: true
+  xy: 161, 113
+  size: 125, 203
+  orig: 125, 203
   offset: 0, 0
   index: -1
 2legs/Head-Front-00
-  rotate: true
-  xy: 532, 271
-  size: 233, 307
-  orig: 233, 307
+  rotate: false
+  xy: 444, 557
+  size: 349, 460
+  orig: 349, 460
   offset: 0, 0
   index: -1
 2legs/Leg-L-02
-  rotate: true
-  xy: 184, 30
-  size: 38, 201
-  orig: 39, 203
-  offset: 0, 1
+  rotate: false
+  xy: 746, 252
+  size: 55, 301
+  orig: 59, 305
+  offset: 1, 2
   index: -1
 2legs/Leg-L-03
-  rotate: false
-  xy: 720, 8
-  size: 101, 57
-  orig: 101, 57
+  rotate: true
+  xy: 797, 724
+  size: 152, 86
+  orig: 152, 86
   offset: 0, 0
   index: -1
 2legs/Leg-R-02
   rotate: true
-  xy: 8, 76
-  size: 51, 200
-  orig: 54, 200
-  offset: 1, 0
+  xy: 444, 477
+  size: 76, 298
+  orig: 81, 301
+  offset: 2, 1
   index: -1
 2legs/Leg-R-03
   rotate: true
-  xy: 774, 74
-  size: 101, 57
-  orig: 101, 57
+  xy: 887, 724
+  size: 152, 86
+  orig: 152, 86
   offset: 0, 0
   index: -1
 2legs/Mouth-Smile-01
   rotate: true
-  xy: 477, 39
-  size: 23, 74
-  orig: 23, 74
+  xy: 588, 190
+  size: 35, 111
+  orig: 35, 111
   offset: 0, 0
   index: -1
 2legs/Mouth-Smile-02
-  rotate: true
-  xy: 393, 24
-  size: 103, 76
-  orig: 107, 80
-  offset: 2, 2
+  rotate: false
+  xy: 712, 133
+  size: 154, 115
+  orig: 160, 121
+  offset: 3, 3
   index: -1
 2legs/Mouth-sad
   rotate: true
-  xy: 559, 27
-  size: 35, 27
-  orig: 39, 31
-  offset: 2, 2
+  xy: 444, 335
+  size: 53, 39
+  orig: 59, 46
+  offset: 3, 4
   index: -1
 2legs/Nostril-R-01
   rotate: false
-  xy: 366, 106
-  size: 15, 21
-  orig: 19, 25
-  offset: 2, 2
+  xy: 129, 51
+  size: 23, 31
+  orig: 29, 37
+  offset: 3, 3
   index: -1
 2legs/Pupil-L-01
   rotate: false
-  xy: 477, 8
-  size: 23, 23
-  orig: 23, 23
+  xy: 444, 297
+  size: 34, 34
+  orig: 34, 34
   offset: 0, 0
   index: -1
 2legs/Tail
   rotate: false
-  xy: 594, 8
-  size: 118, 55
-  orig: 120, 57
-  offset: 1, 1
+  xy: 797, 637
+  size: 176, 83
+  orig: 180, 86
+  offset: 2, 1
   index: -1
 2legs/Veko-Up-L-01
-  rotate: false
-  xy: 781, 204
-  size: 91, 59
-  orig: 91, 59
+  rotate: true
+  xy: 797, 880
+  size: 137, 88
+  orig: 137, 88
   offset: 0, 0
   index: -1
 2legs/Veko-Up-L-02
   rotate: false
-  xy: 216, 82
-  size: 80, 45
-  orig: 80, 45
+  xy: 4, 14
+  size: 121, 68
+  orig: 121, 68
   offset: 0, 0
   index: -1
 2legs/Veko-Up-L-03
   rotate: false
-  xy: 693, 183
-  size: 80, 80
-  orig: 80, 80
+  xy: 588, 229
+  size: 120, 120
+  orig: 120, 120
   offset: 0, 0
   index: -1
 Shadow
   rotate: false
-  xy: 8, 135
-  size: 477, 70
-  orig: 477, 70
+  xy: 161, 4
+  size: 716, 105
+  orig: 716, 105
   offset: 0, 0
   index: -1

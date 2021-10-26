@@ -11,7 +11,7 @@ const { ccclass, property } = _decorator;
 @ccclass('Building')
 export class Building extends Component {
     @property({type: Boolean}) interactable: boolean = true
-    @property({type: Node}) buildButton: Node
+    @property({type: Node}) buildButton: Node = null
     @property({type: Prefab}) tapParticles: Prefab
     @property({type: Prefab}) buildParticles: Prefab
     @property({type: Node}) Zebra: Node = null
@@ -30,6 +30,9 @@ export class Building extends Component {
         if(!GameStateMachine.Instance.stateMachine.isCurrentState("idleState"))
             return
         GameStateMachine.Instance.stateMachine.exitState("animationState")
+        this.Zebra = this.node.getChildByPath("visuals/Mask/zebra")
+        this.ZebraEndTarget = this.node.getChildByPath("visuals/Mask/target")
+        console.log(this.Zebra);
 
         tween(this.node)
         .call(() => {
@@ -48,7 +51,7 @@ export class Building extends Component {
                 tween(this.Zebra)
                 .to(0.5, {worldPosition: this.ZebraEndTarget.worldPosition, scale: new Vec3(1,1,1)})
                 .delay(1)
-                .to(0.5, {position: this.ZebraStartPos})
+                .to(0.5, {position: this.ZebraStartPos, scale: new Vec3(0,0,0)})
                 .call(() => {
                     GameStateMachine.Instance.stateMachine.exitState()
                 })
@@ -64,7 +67,7 @@ export class Building extends Component {
     public init(isCurrentBuilding: boolean, point: BuildingPoint, build: boolean = false){
         this.point = point
         this.buildButton = this.node.getChildByName("Marker")
-        if(!this.buildButton)
+        if(this.buildButton == null)
             this.buildButton = this.node.getChildByName("Button")
         if(isCurrentBuilding){
             this.buildButton.active = true
@@ -72,8 +75,10 @@ export class Building extends Component {
             event.target = this.node
             event.component = "Building"
             event.handler = "setChoice"
-            this.buildButton.getComponent(Button).clickEvents[0] = event
+            this.buildButton.getComponent(Button).clickEvents.push(event)
             this.buildButton.getComponent(Button).interactable = true
+            console.log(this.buildButton.getComponent(Button).clickEvents.length);
+            // this.buildButton.on(Node.EventType.TOUCH_START, this.setChoice, this)
         }
         else
             this.buildButton.active = false
@@ -109,6 +114,7 @@ export class Building extends Component {
         .start()
     }
     public setChoice(){
+        console.log("oke")
         this.point.setChoice()
     }
     public startBuild(){

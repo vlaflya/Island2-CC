@@ -1,27 +1,27 @@
 
 hub.png
-size: 1024,1024
+size: 1024,512
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 papper-1
-  rotate: false
-  xy: 8, 448
-  size: 398, 514
-  orig: 398, 514
+  rotate: true
+  xy: 4, 4
+  size: 365, 471
+  orig: 365, 471
   offset: 0, 0
   index: -1
 papper-2
   rotate: true
-  xy: 8, 42
-  size: 398, 509
-  orig: 398, 509
+  xy: 479, 4
+  size: 365, 466
+  orig: 365, 466
   offset: 0, 0
   index: -1
 rope
-  rotate: true
-  xy: 8, 8
-  size: 26, 298
-  orig: 26, 298
+  rotate: false
+  xy: 949, 96
+  size: 24, 273
+  orig: 24, 273
   offset: 0, 0
   index: -1
