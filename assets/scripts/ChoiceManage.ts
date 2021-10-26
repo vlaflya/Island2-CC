@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, Sprite, assetManager, SpriteFrame, builtinResMgr, path, instantiate, Vec3, AudioClip, AudioSource, tween, AssetManager, Prefab, UITransform, Vec2, sp } from 'cc';
+import { _decorator, Component, Node, Sprite, assetManager, SpriteFrame, builtinResMgr, path, instantiate, Vec3, AudioClip, AudioSource, tween, AssetManager, Prefab, UITransform, Vec2, sp, randomRangeInt } from 'cc';
 import { Building } from './Building';
 import { GameStateMachine } from './GameStateMachine';
 import { BuildingManager } from './BuildingManager';
@@ -40,6 +40,8 @@ export class ChoiceManage extends Component {
         this.paperL.addAnimation(0, "2-Idle", true)
         this.paperL.timeScale = 1
         this.paperL.setEventListener((x, ev) => {this.listner(x, ev)})
+        let r = randomRangeInt(0,3)
+        SoundManager.Instance.setSound("island2_marker_can_build_" + r, this.node)
     }
 
     listner(x, ev){
@@ -86,6 +88,8 @@ export class ChoiceManage extends Component {
             vec.y = vec.x / ratio
             transform.width = vec.x
             transform.height = vec.y
+            if(building.getChildByName("visuals").getChildByName("Mask") != null)
+                building.getChildByName("visuals").getChildByName("Mask").active = false
         })
     }
     public makeChoice1(){
@@ -105,6 +109,8 @@ export class ChoiceManage extends Component {
         this.paperL.setAnimation(0, "3-Down", false)
     }
     private sendChoice(option: string){
+        let r = randomRangeInt(0, 2)
+        SoundManager.Instance.setSound("island2_choice_" + r, this.node)
         this.zebra.setAnimation(0, "3-Choice", false)
         this.zebra.addAnimation(0, "4-Out", false)
         tween(this)
@@ -114,12 +120,12 @@ export class ChoiceManage extends Component {
         .delay(0.5)
         .call(() => {
             SoundManager.Instance.setSound("island_close", this.node)
+            //this.selectWindow.active = false
+            let st = this.optionCount + option
+            this.currentPoint.build(st)
+            BuildingManager.Instance.madeChoise()
+            GameStateMachine.Instance.madeChoise()
         })
         .start()
-        //this.selectWindow.active = false
-        let st = this.optionCount + option
-        this.currentPoint.build(st)
-        BuildingManager.Instance.madeChoise()
-        GameStateMachine.Instance.madeChoise()
     }
 }

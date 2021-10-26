@@ -49,8 +49,9 @@ export class BuildingManager extends Component {
         this.buildingPoints.forEach(point => {
             if(!hasSave)
                 point.init("0-1",point.node.name == this.sequenceNames[this.choiceCount])
-            if(point.node.name == this.sequenceNames[this.choiceCount])
+            if(point.node.name == this.sequenceNames[this.choiceCount]){
                 ChoiceManage.Instance.preload(point.node.name, point.getCount() + 1)
+            }
         });
     }
     public madeChoise(){
@@ -66,6 +67,7 @@ export class BuildingManager extends Component {
                 point.setNextMarker()
         });
     }
+    
 }
 interface readBuildings{
     sequence: string

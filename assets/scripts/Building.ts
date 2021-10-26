@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, sp, loader, assetManager, Sprite, ImageAsset, SpriteFrame, resources, Prefab, tween, instantiate, Vec3, Color, UIOpacity, Button, EventTouch, Touch, UITransform, EventHandler } from 'cc';
+import { _decorator, Component, Node, sp, loader, assetManager, Sprite, ImageAsset, SpriteFrame, resources, Prefab, tween, instantiate, Vec3, Color, UIOpacity, Button, EventTouch, Touch, UITransform, EventHandler, AudioSource, randomRangeInt } from 'cc';
 import { GameStateMachine } from './GameStateMachine';
 import { ChoiceManage } from './ChoiceManage';
 import { BuildingPoint } from './BuildingPoint';
@@ -16,6 +16,10 @@ export class Building extends Component {
     @property({type: Prefab}) buildParticles: Prefab
     @property({type: Node}) Zebra: Node = null
     @property({type: Node}) ZebraEndTarget: Node
+    @property({type: AudioSource}) shortPhrase: AudioSource = null
+    @property({type: AudioSource}) longPhrase: AudioSource = null
+    
+    private phraseCount: number = 0
     private ZebraStartPos: Vec3
 
     private point: BuildingPoint
@@ -34,6 +38,33 @@ export class Building extends Component {
         this.ZebraEndTarget = this.node.getChildByPath("visuals/Mask/target")
         console.log(this.Zebra);
 
+        if(this.node.getChildByName("short") != null)
+            this.shortPhrase = this.node.getChildByName("short").getComponent(AudioSource)
+        if(this.node.getChildByName("long") != null)
+            this.longPhrase = this.node.getChildByName("long").getComponent(AudioSource)
+
+        if(this.shortPhrase != null && this.longPhrase != null){
+            switch(this.phraseCount){
+                case 0:{
+                    this.longPhrase.play()
+                    this.phraseCount++
+                    break
+                }
+                case 1:{
+                    this.shortPhrase.play()
+                    this.phraseCount++
+                    break
+                }
+                case 2:{
+                    let r = randomRangeInt(0, 2)
+                    SoundManager.Instance.setSound("island2_hello_" + r, this.node)
+                }
+            }
+        }
+        if(this.point.getCount() == 0){
+            let r = randomRangeInt(0, 3)
+            SoundManager.Instance.setSound("island2_ruin_" + r, this.node)
+        }
         tween(this.node)
         .call(() => {
             let prt: Node = instantiate(this.tapParticles)
@@ -98,7 +129,17 @@ export class Building extends Component {
         .to(1, {opacity: 255})
         .call(() => {
             ParticleManager.Instance.setParticlesAfterBuild(this.node.getComponent(UITransform))
+            SoundManager.Instance.setSound("island2_build_finish", this.node)
             BuildingManager.Instance.setNextMarker()
+        })
+        .delay(3)
+        .call(() =>{
+            if(this.shortPhrase != null)
+                this.shortPhrase.play()
+        })
+        .delay(1)
+        .call(() =>{
+            
         })
         .start()
     }

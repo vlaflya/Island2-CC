@@ -6798,6 +6798,50 @@
       {
         "__uuid__": "75d00d9f-050b-424d-808a-f9c6275152ff",
         "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "10596155-48ea-4009-85f1-f1b58cc3aa09",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "ad5414d9-0297-4d90-9655-3ace8b30baff",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "3caacdaa-b73c-4cf7-a0ee-9039a812d95e",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "b6531f8b-ea24-4b87-944a-57e89b14de3c",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "fda5f790-b2fe-4f59-b0b5-7befd2058910",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "c78489d6-f544-4d35-8b8e-e2eb330c9edf",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "473d2806-d769-4521-aaa3-eecbe66352a1",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "a7caf92c-ae76-41ba-b5d8-69bf51fd2e6c",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "4ed782dd-e172-492e-aab7-ec853bcfe4b8",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "f751814c-1655-4078-b8f8-70cb5e689477",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "0e77e5ae-dec6-45f0-a752-ece633e46400",
+        "__expectedType__": "cc.AudioClip"
       }
     ],
     "_id": "f1BI3JU09B2o/RCtNJF03C"
