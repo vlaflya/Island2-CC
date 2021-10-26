@@ -270,8 +270,8 @@
     ],
     "value": {
       "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
+      "x": -18.978,
+      "y": 29.522,
       "z": 0
     }
   },
@@ -344,7 +344,7 @@
     "__prefab": {
       "__id__": 19
     },
-    "interactable": true,
+    "interactable": false,
     "buildButton": null,
     "tapParticles": {
       "__uuid__": "e3feec46-14d4-4f89-b619-aa9e4594fd03",
