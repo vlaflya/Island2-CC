@@ -565,6 +565,8 @@
     },
     "Zebra": null,
     "ZebraEndTarget": null,
+    "shortPhrase": null,
+    "longPhrase": null,
     "_id": ""
   },
   {
