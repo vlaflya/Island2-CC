@@ -64,6 +64,8 @@ export class Building extends Component {
     public init(isCurrentBuilding: boolean, point: BuildingPoint, build: boolean = false){
         this.point = point
         this.buildButton = this.node.getChildByName("Marker")
+        if(!this.buildButton)
+            this.buildButton = this.node.getChildByName("Button")
         if(isCurrentBuilding){
             this.buildButton.active = true
             let event: EventHandler = new EventHandler()

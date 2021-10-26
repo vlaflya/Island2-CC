@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, Sprite, assetManager, SpriteFrame, builtinResMgr, path, instantiate, Vec3, AudioClip, AudioSource, tween, AssetManager, Prefab, UITransform, Vec2 } from 'cc';
+import { _decorator, Component, Node, Sprite, assetManager, SpriteFrame, builtinResMgr, path, instantiate, Vec3, AudioClip, AudioSource, tween, AssetManager, Prefab, UITransform, Vec2, sp } from 'cc';
 import { Building } from './Building';
 import { GameStateMachine } from './GameStateMachine';
 import { BuildingManager } from './BuildingManager';
@@ -13,22 +13,49 @@ export class ChoiceManage extends Component {
     @property({type: Node}) selectWindow: Node
     @property({type: UITransform}) option1: UITransform
     @property({type: UITransform}) option2: UITransform
+    @property({type: sp.Skeleton}) paperL: sp.Skeleton
+    @property({type: sp.Skeleton}) paperR: sp.Skeleton
+    @property({type: sp.Skeleton}) zebra: sp.Skeleton
 
     private currentPoint: BuildingPoint
     private optionCount: number = 0
     private bundle
+    private choosePhase: boolean = false
     
     onLoad(){
         ChoiceManage.Instance = this
+        this.zebra.timeScale = 0
+        this.paperL.timeScale = 0
+        this.paperR.timeScale = 0
+        this.zebra.setMix("2-Idle-v2", "3-Choice", 0.5)
     }
     public createChoice(name: string, building: BuildingPoint){
         if(!GameStateMachine.Instance.stateMachine.isCurrentState("idleState"))
             return
         GameStateMachine.Instance.exitIdle("choiseState")
         SoundManager.Instance.setSound("island_marker", this.node)
+        this.choosePhase = true
         this.currentPoint = building
-        this.selectWindow.active = true
+        this.paperL.setAnimation(0, "1-Start", false)
+        this.paperL.addAnimation(0, "2-Idle", true)
+        this.paperL.timeScale = 1
+        this.paperL.setEventListener((x, ev) => {this.listner(x, ev)})
     }
+
+    listner(x, ev){
+        console.log(ev.data.name);
+        if(ev.data.name == "delay-paper-start"){
+            this.paperR.setAnimation(0, "1-Start", false)
+            this.paperR.addAnimation(0, "2-Idle", true)
+            this.paperR.timeScale = 1
+        }
+        if(ev.data.name == "delay-zebra-start"){
+            this.zebra.setAnimation(0, "1-Start", false)
+            this.zebra.addAnimation(0, "2-Idle-v2", true)
+            this.zebra.timeScale = 1
+        }
+    }
+
     public preload(name: string,  optionCount: number){
         this.optionCount = optionCount
         assetManager.loadBundle('Buildings', (err, load) => {
@@ -62,12 +89,24 @@ export class ChoiceManage extends Component {
         })
     }
     public makeChoice1(){
+        if(!this.choosePhase)
+            return
+        this.choosePhase = false
         this.sendChoice("-1")
+        this.paperL.setAnimation(0, "4-Choice", false)
+        this.paperR.setAnimation(0, "3-Down", false)
     }
     public makeChoice2(){
+        if(!this.choosePhase)
+            return
+        this.choosePhase = false
         this.sendChoice("-2")
+        this.paperR.setAnimation(0, "4-Choice", false)
+        this.paperL.setAnimation(0, "3-Down", false)
     }
     private sendChoice(option: string){
+        this.zebra.setAnimation(0, "3-Choice", false)
+        this.zebra.addAnimation(0, "4-Out", false)
         tween(this)
         .call(() => {
             SoundManager.Instance.setSound("island_selectskin", this.node)
@@ -77,7 +116,7 @@ export class ChoiceManage extends Component {
             SoundManager.Instance.setSound("island_close", this.node)
         })
         .start()
-        this.selectWindow.active = false
+        //this.selectWindow.active = false
         let st = this.optionCount + option
         this.currentPoint.build(st)
         BuildingManager.Instance.madeChoise()
