@@ -355,6 +355,8 @@
       "__expectedType__": "cc.Prefab"
     },
     "Zebra": null,
+    "shortPhrase": null,
+    "longPhrase": null,
     "_id": ""
   },
   {
