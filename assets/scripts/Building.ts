@@ -6,6 +6,7 @@ import { BuildingPoint } from './BuildingPoint';
 import { BuildingManager } from './BuildingManager';
 import { ParticleManager } from './ParticleManager';
 import { SoundManager } from './SoundManager';
+import { Marker } from './Marker';
 const { ccclass, property } = _decorator;
 
 @ccclass('Building')
@@ -115,6 +116,7 @@ export class Building extends Component {
             event.handler = "setChoice"
             this.buildButton.getComponent(Button).clickEvents.push(event)
             this.buildButton.getComponent(Button).interactable = true
+            this.buildButton.getComponent(Marker).init(true)
             console.log(this.buildButton.getComponent(Button).clickEvents.length);
             // this.buildButton.on(Node.EventType.TOUCH_START, this.setChoice, this)
         }
@@ -125,8 +127,8 @@ export class Building extends Component {
         this.fadeIn()
     }
     public setNextMarker(){
-        console.log("oke2")
         this.buildButton.active = true
+        this.buildButton.getComponent(Marker).init(false)
         this.buildButton.getComponent(Button).interactable = false
     }
     public fadeIn(){

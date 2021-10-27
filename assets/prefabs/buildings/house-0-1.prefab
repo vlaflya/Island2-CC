@@ -273,8 +273,8 @@
     ],
     "value": {
       "__type__": "cc.Vec3",
-      "x": 255.286,
-      "y": -104.526,
+      "x": 194.46,
+      "y": -135.156,
       "z": 0
     }
   },
@@ -358,6 +358,8 @@
       "__expectedType__": "cc.Prefab"
     },
     "Zebra": null,
+    "shortPhrase": null,
+    "longPhrase": null,
     "_id": ""
   },
   {
