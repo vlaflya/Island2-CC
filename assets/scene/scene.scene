@@ -6844,6 +6844,56 @@
         "__expectedType__": "cc.AudioClip"
       }
     ],
+    "zebraSounds": [
+      {
+        "__uuid__": "6095678f-5505-4a0c-b31b-3a4e191c16c1",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "b8cf4142-31b4-4c90-8f44-8b2e2bfba79e",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "8cc2203e-5276-43dc-9313-72cc9eb4085f",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "25000355-df1d-4c25-b02a-af8195a61097",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "8882f0b2-9fc0-4f5c-9d3d-c6352c8f82c9",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "eecc4e64-54f6-44ff-a56d-ef1f0965e431",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "8eb63cf7-62dc-4fc8-8e66-b49b28e22863",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "4e7bfa22-d47c-4734-b450-63dff261175a",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "5e153657-40ef-4431-a35a-aebce91b0ffd",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "df848a0e-141e-47da-a1a1-04fc8fffe39c",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "a368141c-5169-4c32-bb2a-58a85f006aa7",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "77bd4667-c986-4c62-8ce9-bdbd8f9a3cd2",
+        "__expectedType__": "cc.AudioClip"
+      }
+    ],
     "_id": "f1BI3JU09B2o/RCtNJF03C"
   },
   {

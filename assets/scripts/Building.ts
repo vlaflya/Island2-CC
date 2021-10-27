@@ -22,10 +22,18 @@ export class Building extends Component {
     private phraseCount: number = 0
     private ZebraStartPos: Vec3
 
-    private point: BuildingPoint
+    private point: BuildingPoint = null
 
     start(){
         this.node.on(Node.EventType.TOUCH_START, this.animate, this)
+        let name = this.node.parent.parent.name + "-" + this.point.getCount() + "-1"
+        if(this.node.getChildByName(name) != null && this.point != null)
+            this.shortPhrase = this.node.getChildByName(name).getComponent(AudioSource)
+        else
+            console.log(name);
+        name = this.node.parent.parent.name + "-" + this.point.getCount() + "-2"
+        if(this.node.getChildByName(name) != null && this.point != null)
+            this.longPhrase = this.node.getChildByName(name).getComponent(AudioSource)
     }
 
     private animate(touch: Touch, event: EventTouch){
@@ -38,10 +46,7 @@ export class Building extends Component {
         this.ZebraEndTarget = this.node.getChildByPath("visuals/Mask/target")
         console.log(this.Zebra);
 
-        if(this.node.getChildByName("short") != null)
-            this.shortPhrase = this.node.getChildByName("short").getComponent(AudioSource)
-        if(this.node.getChildByName("long") != null)
-            this.longPhrase = this.node.getChildByName("long").getComponent(AudioSource)
+        
 
         if(this.shortPhrase != null && this.longPhrase != null){
             switch(this.phraseCount){
@@ -57,7 +62,9 @@ export class Building extends Component {
                 }
                 case 2:{
                     let r = randomRangeInt(0, 2)
-                    SoundManager.Instance.setSound("island2_hello_" + r, this.node)
+                    SoundManager.Instance.setRandomZebraSound(this.node)
+                    this.phraseCount = 0
+                    break
                 }
             }
         }
@@ -130,7 +137,7 @@ export class Building extends Component {
         .call(() => {
             ParticleManager.Instance.setParticlesAfterBuild(this.node.getComponent(UITransform))
             SoundManager.Instance.setSound("island2_build_finish", this.node)
-            BuildingManager.Instance.setNextMarker()
+            
         })
         .delay(3)
         .call(() =>{
@@ -139,7 +146,7 @@ export class Building extends Component {
         })
         .delay(1)
         .call(() =>{
-            
+            BuildingManager.Instance.setNextMarker()
         })
         .start()
     }
