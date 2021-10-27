@@ -26,7 +26,9 @@ export class Building extends Component {
     private point: BuildingPoint = null
 
     start(){
-        this.node.on(Node.EventType.TOUCH_START, this.animate, this)
+        this.node.getChildByName("visuals").on(Node.EventType.TOUCH_START, this.animate, this)
+        if(this.point == null)
+            return
         let name = this.node.parent.parent.name + "-" + this.point.getCount() + "-1"
         if(this.node.getChildByName(name) != null && this.point != null)
             this.shortPhrase = this.node.getChildByName(name).getComponent(AudioSource)
@@ -105,10 +107,14 @@ export class Building extends Component {
 
     public init(isCurrentBuilding: boolean, point: BuildingPoint, build: boolean = false){
         this.point = point
-        this.buildButton = this.node.getChildByName("Marker")
-        if(this.buildButton == null)
-            this.buildButton = this.node.getChildByName("Button")
+        // this.buildButton = this.node.getChildByName("Marker")
+        
+        
         if(isCurrentBuilding){
+            this.buildButton = BuildingManager.Instance.getbutton().node
+            if(this.buildButton == null)
+                this.buildButton = this.node.getChildByName("Button")
+            this.buildButton.worldPosition = this.node.getChildByName("Marker").worldPosition
             this.buildButton.active = true
             let event: EventHandler = new EventHandler()
             event.target = this.node
@@ -116,19 +122,23 @@ export class Building extends Component {
             event.handler = "setChoice"
             this.buildButton.getComponent(Button).clickEvents.push(event)
             this.buildButton.getComponent(Button).interactable = true
-            this.buildButton.getComponent(Marker).init(true)
+            this.node.getChildByName("Marker").getComponent(Marker).init(true)
             console.log(this.buildButton.getComponent(Button).clickEvents.length);
             // this.buildButton.on(Node.EventType.TOUCH_START, this.setChoice, this)
         }
-        else
-            this.buildButton.active = false
+        else{
+            if(this.buildButton != null)
+                this.buildButton.active = false
+        }
+            
         if(!build)
             return
         this.fadeIn()
     }
     public setNextMarker(){
-        this.buildButton.active = true
-        this.buildButton.getComponent(Marker).init(false)
+        this.buildButton = BuildingManager.Instance.getbutton().node
+        this.node.getChildByName("Marker").active = true
+        this.node.getChildByName("Marker").getComponent(Marker).init(false)
         this.buildButton.getComponent(Button).interactable = false
     }
     public fadeIn(){

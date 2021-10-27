@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, JsonAsset, assetManager, Prefab, path } from 'cc';
+import { _decorator, Component, Node, JsonAsset, assetManager, Prefab, path, Button } from 'cc';
 import { Building } from './Building';
 import { Bridge } from './Bridge';
 import { BuildingPoint } from './BuildingPoint';
@@ -9,6 +9,7 @@ const { ccclass, property } = _decorator;
 @ccclass('BuildingManager')
 export class BuildingManager extends Component {
     @property({type: JsonAsset}) sequence: JsonAsset
+    @property({type: Button}) buildButton: Button
     @property({type: [BuildingPoint]}) buildingPoints: Array<BuildingPoint> = []
     private choiceCount: number = 0
     private lastDate: string = ""
@@ -18,8 +19,11 @@ export class BuildingManager extends Component {
     onLoad(){
         BuildingManager.Instance = this
     }
-
+    public getbutton(): Button{
+        return this.buildButton
+    }
     public init(save: JsonAsset = null){
+        console.log("oke")
         let hasSave: boolean
         let newDay: boolean = true
         if(save == null){
