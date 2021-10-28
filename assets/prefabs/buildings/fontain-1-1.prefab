@@ -736,7 +736,7 @@
     "interactable": true,
     "buildButton": null,
     "tapParticles": {
-      "__uuid__": "e3feec46-14d4-4f89-b619-aa9e4594fd03",
+      "__uuid__": "c7e9a0e1-6d50-4f87-ba8d-ceba7121f83d",
       "__expectedType__": "cc.Prefab"
     },
     "buildParticles": {
