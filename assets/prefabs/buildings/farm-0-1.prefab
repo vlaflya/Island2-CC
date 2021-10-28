@@ -68,7 +68,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Sprite",
+    "_name": "visuals",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
