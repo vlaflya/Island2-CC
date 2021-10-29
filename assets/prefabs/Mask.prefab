@@ -85,7 +85,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -74.152,
+      "x": 0,
       "y": 0,
       "z": 0
     },
@@ -98,8 +98,8 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 0.1,
+      "y": 0.1,
       "z": 1
     },
     "_layer": 33554432,
@@ -118,14 +118,14 @@
     "node": {
       "__id__": 2
     },
-    "_enabled": false,
+    "_enabled": true,
     "__prefab": {
       "__id__": 4
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 119,
-      "height": 103
+      "width": 1070.02,
+      "height": 908.23
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -136,10 +136,10 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "d9AtxXzcBIEb/CLVfJtaT+"
+    "fileId": "a1XVD8V6hH0rT88/61lILp"
   },
   {
-    "__type__": "cc.Sprite",
+    "__type__": "sp.Skeleton",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -160,28 +160,28 @@
       "b": 255,
       "a": 255
     },
-    "_spriteFrame": {
-      "__uuid__": "2e8f76c4-6886-46b4-8322-f4fe34420094@f9941",
-      "__expectedType__": "cc.SpriteFrame"
+    "loop": false,
+    "_premultipliedAlpha": true,
+    "_timeScale": 1,
+    "_useTint": false,
+    "_preCacheMode": 0,
+    "_cacheMode": 0,
+    "_defaultCacheMode": 0,
+    "_debugBones": false,
+    "_debugSlots": false,
+    "_skeletonData": {
+      "__uuid__": "ab5f74f8-8483-4e2c-a67b-c57a119c543b",
+      "__expectedType__": "sp.SkeletonData"
     },
-    "_type": 0,
-    "_fillType": 0,
-    "_sizeMode": 1,
-    "_fillCenter": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_fillStart": 0,
-    "_fillRange": 0,
-    "_isTrimmedMode": true,
-    "_useGrayscale": false,
-    "_atlas": null,
+    "defaultSkin": "default",
+    "defaultAnimation": "<None>",
+    "_sockets": [],
+    "_debugMesh": false,
     "_id": ""
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "06Ryt5G7hNMI8gigvnM5o+"
+    "fileId": "38DQ+GZFtLNrRskwA4FN2d"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -191,7 +191,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "6aLM/evKRJHJHwp3PM1H7p"
+    "fileId": "20Le1MfEtO/aL0kB9ox1Rc"
   },
   {
     "__type__": "cc.Node",
@@ -201,7 +201,7 @@
       "__id__": 1
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 9

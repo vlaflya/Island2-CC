@@ -88,11 +88,13 @@ export class Building extends Component {
         .call(() => {
             if(this.Zebra != null){
                 this.ZebraStartPos = new Vec3(this.Zebra.position)
-                this.Zebra.scale = new Vec3(0,0,0)
+                //this.Zebra.scale = new Vec3(0,0,0)
+                let anim: sp.Skeleton = this.Zebra.getComponent(sp.Skeleton)
+                anim.setAnimation(0, "Happy", false)
                 tween(this.Zebra)
-                .to(0.5, {worldPosition: this.ZebraEndTarget.worldPosition, scale: new Vec3(1,1,1)})
-                .delay(1)
-                .to(0.5, {position: this.ZebraStartPos, scale: new Vec3(0,0,0)})
+                // .to(0.5, {scale: new Vec3(1,1,1)})
+                .delay(2)
+                // .to(0.5, {scale: new Vec3(0,0,0)})
                 .call(() => {
                     GameStateMachine.Instance.stateMachine.exitState()
                 })
