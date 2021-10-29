@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node } from 'cc';
+import { _decorator, Component, Node, tween, Quat } from 'cc';
 const { ccclass, property } = _decorator;
 
  
@@ -7,6 +7,14 @@ const { ccclass, property } = _decorator;
 export class Marker extends Component {
     @property({type: Node}) activeVisuals: Node
     @property({type: Node}) inactiveVisuals: Node
+    @property({type: Node}) rays: Node
+    
+    start(){
+        tween(this.rays)
+        .by(1, {angle: 50})
+        .repeatForever()
+        .start()
+    }
 
     public init(active: boolean){
         if(active){

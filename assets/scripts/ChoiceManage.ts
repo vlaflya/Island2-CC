@@ -113,7 +113,7 @@ export class ChoiceManage extends Component {
         SoundManager.Instance.setSound("island2_choice_" + r, this.node)
         this.zebra.setAnimation(0, "3-Choice", false)
         this.zebra.addAnimation(0, "4-Out", false)
-        BuildingManager.Instance.buildButton.node.worldPosition = new Vec3(-1000, -1000)
+        // BuildingManager.Instance.buildButton.node.worldPosition = new Vec3(-1000, -1000)
         tween(this)
         .call(() => {
             SoundManager.Instance.setSound("island_selectskin", this.node)

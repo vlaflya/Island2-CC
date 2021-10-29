@@ -12,10 +12,11 @@ export class BuildingPoint extends Component {
 
     public build(st: string){
         tween(this.node.children[0].children[0].getComponent(UIOpacity))
+        .delay(1)
         .call(() => {
             this.node.children[0].children[0].getComponent(Building).fadeOut()
         })
-        .delay(1)
+        .delay(2)
         .call(() => {
             this.init(st, false, true)
         })

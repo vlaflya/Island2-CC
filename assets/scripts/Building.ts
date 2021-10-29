@@ -83,8 +83,8 @@ export class Building extends Component {
             prt.worldPosition = pos
             console.log(prt.name);
         })
-        .by(0.1, {scale: new Vec3(-0.05, -0.05, -0.05)}, {easing: 'bounceIn'})
-        .by(0.1, {scale: new Vec3(0.05, 0.05, 0.05)}, {easing: 'bounceOut'})
+        .by(0.1, {scale: new Vec3(-0.05, -0.05, -0.07)}, {easing: 'bounceIn'})
+        .by(0.1, {scale: new Vec3(0.05, 0.05, 0.07)}, {easing: 'bounceOut'})
         .call(() => {
             if(this.Zebra != null){
                 this.ZebraStartPos = new Vec3(this.Zebra.position)
@@ -129,8 +129,8 @@ export class Building extends Component {
             // this.buildButton.on(Node.EventType.TOUCH_START, this.setChoice, this)
         }
         else{
-            if(this.buildButton != null)
-                this.buildButton.active = false
+            // if(this.buildButton != null)
+            //     this.buildButton.active = false
         }
             
         if(!build)
@@ -139,9 +139,10 @@ export class Building extends Component {
     }
     public setNextMarker(){
         this.buildButton = BuildingManager.Instance.getbutton().node
+        this.buildButton.worldPosition = this.node.getChildByName("Marker").worldPosition
         this.node.getChildByName("Marker").active = true
         this.node.getChildByName("Marker").getComponent(Marker).init(false)
-        this.buildButton.getComponent(Button).interactable = false
+        this.buildButton.getComponent(Button).interactable = true
     }
     public fadeIn(){
         this.node.getComponent(UIOpacity).opacity = 255
@@ -149,7 +150,7 @@ export class Building extends Component {
         tween(this.node.getComponent(UIOpacity))
         .to(1, {opacity: 255})
         .call(() => {
-            ParticleManager.Instance.setParticlesAfterBuild(this.node.getComponent(UITransform))
+            ParticleManager.Instance.setParticlesAfterBuild(this.node.getChildByName("visuals").getComponent(UITransform))
             SoundManager.Instance.setSound("island2_build_finish", this.node)
             
         })
@@ -166,11 +167,11 @@ export class Building extends Component {
     }
     public fadeOut(){
         SoundManager.Instance.setSound("island_construct2", this.node.parent)
-        let prt: Node = instantiate(this.buildParticles)
-        prt.parent = this.node.parent.parent.children[1]
-        console.log(prt.parent.name)
-        prt.position = new Vec3(0,0,0)
-        console.log(prt.name);
+        // let prt: Node = instantiate(this.buildParticles)
+        // prt.parent = this.node.parent.parent.children[1]
+        // console.log(prt.parent.name)
+        // prt.position = new Vec3(0,0,0)
+        ParticleManager.Instance.setBuildParticles(this.node.parent.parent.children[1])
         tween(this.node.getComponent(UIOpacity))
         .to(1, {opacity: 0})
         .start()
