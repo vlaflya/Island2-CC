@@ -106,7 +106,7 @@
       "a": 255
     },
     "duration": 1,
-    "emissionRate": 20,
+    "emissionRate": 50,
     "life": 1.87,
     "lifeVar": 1,
     "angle": 90,
@@ -158,7 +158,7 @@
       "__expectedType__": "cc.ParticleAsset"
     },
     "_spriteFrame": null,
-    "_totalParticles": 28,
+    "_totalParticles": 58,
     "_startColor": {
       "__type__": "cc.Color",
       "r": 255,
