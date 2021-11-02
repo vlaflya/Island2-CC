@@ -1,0 +1,272 @@
+
+Zebra-Main.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Eye-Front
+  rotate: false
+  xy: 881, 206
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+Noga_1-1
+  rotate: true
+  xy: 850, 64
+  size: 59, 25
+  orig: 59, 25
+  offset: 0, 0
+  index: -1
+Noga_1-2
+  rotate: false
+  xy: 704, 59
+  size: 18, 95
+  orig: 18, 96
+  offset: 0, 0
+  index: -1
+Noga_2-1
+  rotate: true
+  xy: 842, 125
+  size: 63, 27
+  orig: 63, 27
+  offset: 0, 0
+  index: -1
+Noga_2-2
+  rotate: false
+  xy: 664, 156
+  size: 20, 98
+  orig: 21, 100
+  offset: 1, 2
+  index: -1
+Noga_3-1
+  rotate: false
+  xy: 538, 5
+  size: 58, 28
+  orig: 58, 28
+  offset: 0, 0
+  index: -1
+Noga_3-2
+  rotate: false
+  xy: 619, 46
+  size: 22, 102
+  orig: 23, 103
+  offset: 1, 0
+  index: -1
+Noga_4-1
+  rotate: true
+  xy: 786, 53
+  size: 62, 25
+  orig: 62, 27
+  offset: 0, 1
+  index: -1
+Noga_4-2
+  rotate: false
+  xy: 686, 156
+  size: 18, 98
+  orig: 19, 99
+  offset: 1, 1
+  index: -1
+Pupil
+  rotate: false
+  xy: 444, 2
+  size: 17, 17
+  orig: 17, 17
+  offset: 0, 0
+  index: -1
+Triangle
+  rotate: false
+  xy: 758, 183
+  size: 71, 71
+  orig: 71, 71
+  offset: 0, 0
+  index: -1
+Veko-Down
+  rotate: true
+  xy: 667, 2
+  size: 46, 25
+  orig: 46, 25
+  offset: 0, 0
+  index: -1
+Veko-Up
+  rotate: false
+  xy: 488, 4
+  size: 48, 29
+  orig: 48, 29
+  offset: 0, 0
+  index: -1
+Veko-Up-01
+  rotate: false
+  xy: 618, 3
+  size: 47, 32
+  orig: 47, 32
+  offset: 0, 0
+  index: -1
+Zebra-eyes-closed
+  rotate: false
+  xy: 2, 7
+  size: 16, 10
+  orig: 16, 10
+  offset: 0, 0
+  index: -1
+Zebra-eyes-normal
+  rotate: true
+  xy: 706, 174
+  size: 80, 50
+  orig: 80, 50
+  offset: 0, 0
+  index: -1
+Zebra-eyes-strong
+  rotate: true
+  xy: 724, 92
+  size: 80, 50
+  orig: 80, 50
+  offset: 0, 0
+  index: -1
+ZebraBrovi1
+  rotate: true
+  xy: 598, 2
+  size: 33, 18
+  orig: 33, 18
+  offset: 0, 0
+  index: -1
+ZebraBrovi2
+  rotate: false
+  xy: 877, 104
+  size: 21, 24
+  orig: 21, 24
+  offset: 0, 0
+  index: -1
+ZebraNoga_1
+  rotate: false
+  xy: 643, 50
+  size: 59, 98
+  orig: 61, 99
+  offset: 1, 1
+  index: -1
+ZebraNoga_2
+  rotate: false
+  xy: 553, 37
+  size: 64, 104
+  orig: 66, 105
+  offset: 0, 1
+  index: -1
+ZebraNoga_3
+  rotate: false
+  xy: 488, 35
+  size: 63, 106
+  orig: 63, 107
+  offset: 0, 1
+  index: -1
+ZebraNoga_4
+  rotate: false
+  xy: 599, 150
+  size: 63, 104
+  orig: 63, 104
+  offset: 0, 0
+  index: -1
+ZebraNos
+  rotate: true
+  xy: 761, 53
+  size: 37, 23
+  orig: 37, 23
+  offset: 0, 0
+  index: -1
+ZebraRot-01
+  rotate: true
+  xy: 410, 2
+  size: 17, 32
+  orig: 17, 32
+  offset: 0, 0
+  index: -1
+ZebraRot-02
+  rotate: false
+  xy: 724, 51
+  size: 35, 39
+  orig: 35, 39
+  offset: 0, 0
+  index: -1
+ZebraRot-03
+  rotate: true
+  xy: 831, 190
+  size: 64, 48
+  orig: 64, 48
+  offset: 0, 0
+  index: -1
+ZebraRot-04
+  rotate: true
+  xy: 877, 78
+  size: 24, 21
+  orig: 24, 21
+  offset: 0, 0
+  index: -1
+ZebraRot-05
+  rotate: true
+  xy: 813, 54
+  size: 61, 35
+  orig: 61, 35
+  offset: 0, 0
+  index: -1
+ZebraTelo
+  rotate: false
+  xy: 2, 19
+  size: 349, 235
+  orig: 349, 235
+  offset: 0, 0
+  index: -1
+ZebraUho_1
+  rotate: false
+  xy: 776, 117
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+ZebraUho_2
+  rotate: false
+  xy: 834, 2
+  size: 60, 50
+  orig: 60, 50
+  offset: 0, 0
+  index: -1
+buble
+  rotate: true
+  xy: 488, 143
+  size: 111, 109
+  orig: 111, 109
+  offset: 0, 0
+  index: -1
+head_front
+  rotate: false
+  xy: 353, 21
+  size: 133, 233
+  orig: 133, 233
+  offset: 0, 0
+  index: -1
+mouth-10
+  rotate: false
+  xy: 767, 3
+  size: 65, 48
+  orig: 65, 48
+  offset: 0, 0
+  index: -1
+mouth-11
+  rotate: true
+  xy: 871, 130
+  size: 58, 48
+  orig: 58, 48
+  offset: 0, 0
+  index: -1
+nose
+  rotate: false
+  xy: 353, 2
+  size: 55, 17
+  orig: 55, 17
+  offset: 0, 0
+  index: -1
+tail
+  rotate: true
+  xy: 694, 8
+  size: 40, 71
+  orig: 41, 71
+  offset: 0, 0
+  index: -1

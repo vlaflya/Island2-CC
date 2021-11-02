@@ -222,11 +222,11 @@
     "_debugBones": false,
     "_debugSlots": false,
     "_skeletonData": {
-      "__uuid__": "ab5f74f8-8483-4e2c-a67b-c57a119c543b",
+      "__uuid__": "ee7b901b-380c-4fd2-b687-1c053c66ed7a",
       "__expectedType__": "sp.SkeletonData"
     },
     "defaultSkin": "default",
-    "defaultAnimation": "<None>",
+    "defaultAnimation": "",
     "_sockets": [],
     "_debugMesh": false,
     "_id": ""
@@ -253,7 +253,7 @@
       "__id__": 2
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 10
