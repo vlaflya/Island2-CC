@@ -7376,6 +7376,10 @@
         "__expectedType__": "cc.AudioClip"
       }
     ],
+    "queueAsset": {
+      "__uuid__": "4b15079d-e94f-4dca-b378-4be390fd37d5",
+      "__expectedType__": "cc.JsonAsset"
+    },
     "_id": "f1BI3JU09B2o/RCtNJF03C"
   },
   {

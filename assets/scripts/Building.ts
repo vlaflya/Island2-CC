@@ -15,10 +15,12 @@ export class Building extends Component {
     @property({type: Node}) buildButton: Node = null
     @property({type: Prefab}) tapParticles: Prefab
     @property({type: Prefab}) buildParticles: Prefab
+    @property({type: Boolean}) horizontal = false
     @property({type: Node}) Zebra: Node = null
     @property({type: Node}) zebraEndTarget: Node
     @property({type: AudioSource}) shortPhrase: AudioSource = null
     @property({type: AudioSource}) longPhrase: AudioSource = null
+    
     
     private zebraStartPos: Vec3
     private startScale: Vec3 = null
@@ -84,12 +86,16 @@ export class Building extends Component {
         })
         .start()
     }
+
     animating: boolean = false
     animateZebra(canExit: boolean){
         this.animating = true
         //this.Zebra.scale = new Vec3(0,0,0)
         let anim: sp.Skeleton = this.Zebra.getComponent(sp.Skeleton)
-        anim.setAnimation(0, "Happy", false)
+        if(!this.horizontal)
+            anim.setAnimation(0, "Happy", false)
+        else
+            anim.setAnimation(0, "Happy2", false)
         this.Zebra.getComponent(sp.Skeleton).setEventListener((x, ev) => {this.listner(x, ev)})
         tween(this.Zebra)
         .to(0.5, {worldPosition: this.zebraEndTarget.worldPosition})
@@ -102,11 +108,13 @@ export class Building extends Component {
             })
         .start()
     }
+
     private listner(x, ev){
         if(ev.data.name == "peak"){
             console.log("peak")
         }
     }
+
     public init(isCurrentBuilding: boolean, point: BuildingPoint, build: boolean = false){
         this.point = point
         // this.buildButton = this.node.getChildByName("Marker")
