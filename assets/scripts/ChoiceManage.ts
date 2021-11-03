@@ -16,6 +16,7 @@ export class ChoiceManage extends Component {
     @property({type: sp.Skeleton}) paperL: sp.Skeleton
     @property({type: sp.Skeleton}) paperR: sp.Skeleton
     @property({type: sp.Skeleton}) zebra: sp.Skeleton
+    
 
     private currentPoint: BuildingPoint
     private optionCount: number = 0
@@ -93,21 +94,24 @@ export class ChoiceManage extends Component {
         })
     }
     public makeChoice1(){
-        if(!this.choosePhase)
+        if(!this.choosePhase){
             return
+        }
         this.choosePhase = false
         this.sendChoice("-1")
         this.paperL.setAnimation(0, "4-Choice", false)
         this.paperR.setAnimation(0, "3-Down", false)
     }
     public makeChoice2(){
-        if(!this.choosePhase)
+        if(!this.choosePhase){
             return
+        }
         this.choosePhase = false
         this.sendChoice("-2")
         this.paperR.setAnimation(0, "4-Choice", false)
         this.paperL.setAnimation(0, "3-Down", false)
     }
+    
     private sendChoice(option: string){
         let r = randomRangeInt(0, 2)
         SoundManager.Instance.setSound("island2_choice_" + r, this.node)

@@ -1,12 +1,18 @@
 
-import { _decorator, Component, Node, AudioClip, AudioSource, assetManager, randomRangeInt, JsonAsset } from 'cc';
+import { _decorator, Component, Node, AudioClip, AudioSource, assetManager, randomRangeInt, JsonAsset, UITransform, EventTouch, tween, CCFloat } from 'cc';
+import { GameStateMachine } from './GameStateMachine';
 const { ccclass, property } = _decorator;
 
 @ccclass('SoundManager')
 export class SoundManager extends Component {
     @property({type: [AudioClip]}) clips: Array<AudioClip> = []
-    @property({type: AudioClip}) zebraSounds: Array<AudioClip> = []
-
+    @property({type: [AudioClip]}) zebraSounds: Array<AudioClip> = []
+    @property({type: [AudioClip]}) tutorialSounds: Array<AudioClip> = []
+    @property({type: [AudioClip]}) unavalibleClips: Array<AudioClip> = []
+    @property({type: CCFloat}) inactiveDelay
+    @property({type: Node}) background: Node = null
+    private countEmptyClicks = 0
+    @property({type: CCFloat}) maxEmptyClicks
     private currentSource: AudioSource = null
     private currentQueueCount: number = 0
     @property({type: JsonAsset}) queueAsset: JsonAsset
@@ -15,9 +21,43 @@ export class SoundManager extends Component {
     
     onLoad(){
         SoundManager.Instance = this
+        this.background.on(Node.EventType.TOUCH_START, this.emptyClipClick, this)
         let r = randomRangeInt(0, 2)
         this.setSound("island2_hello_" + r, this.node)
         this.readQueue()
+        tween(this)
+        .delay(this.inactiveDelay)
+        .call(() =>{
+            this.tryPlayTutorial()
+        })
+        .repeatForever()
+        .start()
+    }
+    
+    private emptyClipClick(){
+
+    }
+
+    private prevRandom = 0
+    public playUnavalible(){
+        let r = randomRangeInt(0, this.unavalibleClips.length)
+        if(r == this.prevRandom){
+            if(r == 0)
+                r++
+            else
+                r--
+        }
+        this.prevRandom = r
+        this.trySetLine(this.unavalibleClips[r], this.node)
+    }
+
+    private tryPlayTutorial(touch?: Touch, event?: EventTouch){
+        if(GameStateMachine.Instance.stateMachine.isCurrentState("idleState"))
+        if(this.currentSource != null){
+            if(this.currentSource.playing){
+                return
+            }
+        }
     }
 
     private readQueue(){
@@ -42,9 +82,19 @@ export class SoundManager extends Component {
             if(this.currentSource.playing){
                 return false
             }
-            this.setLine(clip, node)
         }
         this.setLine(clip, node)
+    }
+
+    private setLine(clip: AudioClip, node: Node){
+        let source: Node = null
+        source = node.getChildByName("voice")
+        if(source != null){
+            source.destroy()
+        }
+        source = new Node("voice")
+        this.currentSource = source.addComponent(AudioSource)
+        this.setClip(source, clip)
     }
     
     public getVoiceQueue(short: AudioSource, long: AudioSource, node: Node): boolean{
@@ -87,15 +137,7 @@ export class SoundManager extends Component {
         this.currentSource = source
         source.play()
     }
-    private setLine(clip: AudioClip, node: Node){
-        let source: Node = null
-        source = node.getChildByName("voice")
-        if(source != null){
-            source.destroy()
-        }
-        source = new Node("voice")
-        this.setClip(source, clip)
-    }
+    
     public setRandomZebraSound(node: Node): AudioSource{
         let source: Node = null
         source = node.getChildByName("source")
@@ -120,7 +162,9 @@ export class SoundManager extends Component {
         });
     }
     private setClip(node: Node, clip: AudioClip): AudioSource{
-        let source =  node.addComponent(AudioSource)
+        let source =  node.getComponent(AudioSource)
+        if(source == null)
+            source =  node.addComponent(AudioSource)
         source.clip = clip
         source.play()
         return source

@@ -1398,7 +1398,7 @@
         "__id__": 54
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 57
@@ -1572,7 +1572,7 @@
     "node": {
       "__id__": 53
     },
-    "_enabled": false,
+    "_enabled": true,
     "__prefab": null,
     "_visFlags": 0,
     "_customMaterial": null,
@@ -7485,6 +7485,24 @@
         "__expectedType__": "cc.AudioClip"
       }
     ],
+    "tutorialSounds": [],
+    "unavalibleClips": [
+      {
+        "__uuid__": "3bdcbf78-ce20-42b7-b620-22fb4cff79e9",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "09ecbd13-cfb2-4f8c-adf9-9dfb3d70c175",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "2c2792d9-a67b-4e25-8a07-89f2f6b55a94",
+        "__expectedType__": "cc.AudioClip"
+      }
+    ],
+    "background": {
+      "__id__": 3
+    },
     "queueAsset": {
       "__uuid__": "4b15079d-e94f-4dca-b378-4be390fd37d5",
       "__expectedType__": "cc.JsonAsset"

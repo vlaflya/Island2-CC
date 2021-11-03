@@ -150,7 +150,15 @@ export class Building extends Component {
         this.buildButton.worldPosition = this.node.getChildByName("Marker").worldPosition
         this.node.getChildByName("Marker").active = true
         this.node.getChildByName("Marker").getComponent(Marker).init(false)
-        this.buildButton.getComponent(Button).interactable = true
+        let event: EventHandler = new EventHandler()
+        event.target = this.node
+        event.component = "Building"
+        event.handler = "cantBuild"
+        this.buildButton.getComponent(Button).clickEvents = []
+        this.buildButton.getComponent(Button).clickEvents.push(event)
+    }
+    public cantBuild(){
+        SoundManager.Instance.playUnavalible()
     }
     public fadeIn(){
         this.node.getComponent(UIOpacity).opacity = 255
