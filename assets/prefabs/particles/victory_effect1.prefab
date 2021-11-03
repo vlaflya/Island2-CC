@@ -106,7 +106,7 @@
       "a": 255
     },
     "duration": 1,
-    "emissionRate": 50,
+    "emissionRate": 30,
     "life": 1.87,
     "lifeVar": 1,
     "angle": 90,
