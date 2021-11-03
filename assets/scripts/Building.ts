@@ -98,9 +98,9 @@ export class Building extends Component {
             anim.setAnimation(0, "Happy2", false)
         this.Zebra.getComponent(sp.Skeleton).setEventListener((x, ev) => {this.listner(x, ev)})
         tween(this.Zebra)
-        .to(0.5, {worldPosition: this.zebraEndTarget.worldPosition}, {easing: 'sineIn'})
+        .to(0.5, {worldPosition: this.zebraEndTarget.worldPosition})
         .delay(2)
-        .to(0.5, {worldPosition: this.zebraStartPos}, {easing: "sineOut"})
+        .to(0.5, {worldPosition: this.zebraStartPos})
         .call(() => {
             if(canExit)
                 GameStateMachine.Instance.stateMachine.exitState()
