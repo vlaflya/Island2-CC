@@ -430,7 +430,7 @@
     "propertyPath": [
       "_active"
     ],
-    "value": false
+    "value": true
   },
   {
     "__type__": "cc.UITransform",
@@ -1398,7 +1398,7 @@
         "__id__": 54
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 57
@@ -1572,7 +1572,7 @@
     "node": {
       "__id__": 53
     },
-    "_enabled": true,
+    "_enabled": false,
     "__prefab": null,
     "_visFlags": 0,
     "_customMaterial": null,
