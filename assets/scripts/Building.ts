@@ -193,8 +193,15 @@ export class Building extends Component {
         .start()
     }
     public setChoice(){
-        console.log("oke")
-        this.point.setChoice()
+        if(!GameStateMachine.Instance.stateMachine.isCurrentState("idleState"))
+            return
+        tween(this.node.getChildByName("Marker"))
+        .by(0.2, {scale: new Vec3(0.1,0.1)}, {easing: 'bounceOut'})
+        .by(0.2, {scale: new Vec3(-0.1,-0.1)}, {easing: 'bounceOut'})
+        .call(() => {
+            this.point.setChoice()
+        })
+        .start()
     }
     public startBuild(){
         if(GameStateMachine.Instance.stateMachine.isCurrentState("idle")){
