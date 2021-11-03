@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, sp, loader, assetManager, Sprite, ImageAsset, SpriteFrame, resources, Prefab, tween, instantiate, Vec3, Color, UIOpacity, Button, EventTouch, Touch, UITransform, EventHandler, AudioSource, randomRangeInt, Tween } from 'cc';
+import { _decorator, Component, Node, sp, loader, assetManager, Sprite, ImageAsset, SpriteFrame, resources, Prefab, tween, instantiate, Vec3, Color, UIOpacity, Button, EventTouch, Touch, UITransform, EventHandler, AudioSource, randomRangeInt, Tween, CCFloat } from 'cc';
 import { GameStateMachine } from './GameStateMachine';
 import { ChoiceManage } from './ChoiceManage';
 import { BuildingPoint } from './BuildingPoint';
@@ -12,14 +12,15 @@ const { ccclass, property } = _decorator;
 @ccclass('Building')
 export class Building extends Component {
     @property({type: Boolean}) interactable: boolean = true
-    @property({type: Node}) buildButton: Node = null
+    private buildButton: Node = null
     @property({type: Prefab}) tapParticles: Prefab
     @property({type: Prefab}) buildParticles: Prefab
     @property({type: Boolean}) horizontal = false
-    @property({type: Node}) Zebra: Node = null
-    @property({type: Node}) zebraEndTarget: Node
-    @property({type: AudioSource}) shortPhrase: AudioSource = null
-    @property({type: AudioSource}) longPhrase: AudioSource = null
+    @property({type: CCFloat}) scale: number = 1
+    private Zebra: Node = null
+    private zebraEndTarget: Node
+    private shortPhrase: AudioSource = null
+    private longPhrase: AudioSource = null
     
     
     private zebraStartPos: Vec3
@@ -207,5 +208,8 @@ export class Building extends Component {
         if(GameStateMachine.Instance.stateMachine.isCurrentState("idle")){
             GameStateMachine.Instance.exitIdle("choise")
         }
+    }
+    public getScale(): number{
+        return this.scale
     }
 }

@@ -89,6 +89,8 @@ export class ChoiceManage extends Component {
             vec.y = vec.x / ratio
             transform.width = vec.x
             transform.height = vec.y
+            let scale = building.getComponent(Building).getScale()
+            transform.node.scale = new Vec3(scale, scale)
             if(building.getChildByName("visuals").getChildByName("Mask") != null)
                 building.getChildByName("visuals").getChildByName("Mask").active = false
         })
