@@ -422,7 +422,7 @@
     ],
     "value": {
       "__type__": "cc.Vec3",
-      "x": -0.1,
+      "x": 0.1,
       "y": 0.1,
       "z": 1
     }
@@ -827,6 +827,7 @@
       "__uuid__": "81a37bcc-2992-4aa2-bc03-0f9fd4476edc",
       "__expectedType__": "cc.Prefab"
     },
+    "horizontal": true,
     "Zebra": null,
     "shortPhrase": null,
     "longPhrase": null,
