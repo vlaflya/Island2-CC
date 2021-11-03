@@ -25,17 +25,36 @@ export class SoundManager extends Component {
         let r = randomRangeInt(0, 2)
         this.setSound("island2_hello_" + r, this.node)
         this.readQueue()
-        tween(this)
-        .delay(this.inactiveDelay)
-        .call(() =>{
-            this.tryPlayTutorial()
-        })
-        .repeatForever()
-        .start()
+        // tween(this)
+        // .delay(this.inactiveDelay)
+        // .call(() =>{
+        //     this.tryPlayTutorial()
+        // })
+        // .repeatForever()
+        // .start()
     }
     
     private emptyClipClick(){
-
+        
+    }
+    private prevRandomTutor = 0
+    private tryPlayTutorial(touch?: Touch, event?: EventTouch){
+        if(!GameStateMachine.Instance.stateMachine.isCurrentState("idleState"))
+            return
+        if(this.currentSource != null){
+            if(this.currentSource.playing){
+                return
+            }
+        }
+        let r = randomRangeInt(0, this.tutorialSounds.length)
+        if(r == this.prevRandomTutor){
+            if(r == 0)
+                r++
+            else
+                r--
+        }
+        this.prevRandom = r
+        this.trySetLine(this.tutorialSounds[r], this.node)
     }
 
     private prevRandom = 0
@@ -49,15 +68,6 @@ export class SoundManager extends Component {
         }
         this.prevRandom = r
         this.trySetLine(this.unavalibleClips[r], this.node)
-    }
-
-    private tryPlayTutorial(touch?: Touch, event?: EventTouch){
-        if(GameStateMachine.Instance.stateMachine.isCurrentState("idleState"))
-        if(this.currentSource != null){
-            if(this.currentSource.playing){
-                return
-            }
-        }
     }
 
     private readQueue(){
