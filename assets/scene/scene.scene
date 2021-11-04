@@ -44,9 +44,6 @@
         "__id__": 48
       },
       {
-        "__id__": 53
-      },
-      {
         "__id__": 203
       },
       {
@@ -63,6 +60,9 @@
       },
       {
         "__id__": 246
+      },
+      {
+        "__id__": 53
       },
       {
         "__id__": 293
@@ -6032,8 +6032,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 180,
-      "height": 220
+      "width": 165,
+      "height": 210
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -6522,8 +6522,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 180,
-      "height": 220
+      "width": 165,
+      "height": 210
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
