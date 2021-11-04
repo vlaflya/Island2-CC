@@ -777,7 +777,6 @@
       "__id__": 48
     },
     "interactable": true,
-    "buildButton": null,
     "tapParticles": {
       "__uuid__": "aafafd5b-12d2-4e1d-a7f2-b5df0214ed07",
       "__expectedType__": "cc.Prefab"
@@ -787,9 +786,7 @@
       "__expectedType__": "cc.Prefab"
     },
     "horizontal": false,
-    "Zebra": null,
-    "shortPhrase": null,
-    "longPhrase": null,
+    "scale": 0.9,
     "_id": ""
   },
   {
