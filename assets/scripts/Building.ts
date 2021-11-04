@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, sp, loader, assetManager, Sprite, ImageAsset, SpriteFrame, resources, Prefab, tween, instantiate, Vec3, Color, UIOpacity, Button, EventTouch, Touch, UITransform, EventHandler, AudioSource, randomRangeInt, Tween, CCFloat } from 'cc';
+import { _decorator, Component, Node, sp, loader, assetManager, Sprite, ImageAsset, SpriteFrame, resources, Prefab, tween, instantiate, Vec3, Color, UIOpacity, Button, EventTouch, Touch, UITransform, EventHandler, AudioSource, randomRangeInt, Tween, CCFloat, Vec2 } from 'cc';
 import { GameStateMachine } from './GameStateMachine';
 import { ChoiceManage } from './ChoiceManage';
 import { BuildingPoint } from './BuildingPoint';
@@ -17,11 +17,13 @@ export class Building extends Component {
     @property({type: Prefab}) buildParticles: Prefab
     @property({type: Boolean}) horizontal = false
     @property({type: CCFloat}) scale: number = 1
+    @property({type: Vec2}) shift = new Vec2(0,0)
     private Zebra: Node = null
     private zebraEndTarget: Node
     private shortPhrase: AudioSource = null
     private longPhrase: AudioSource = null
-    
+    private marker: Node = null
+    private markerDefaultSize: Vec3
     
     private zebraStartPos: Vec3
     private startScale: Vec3 = null
@@ -119,13 +121,13 @@ export class Building extends Component {
     public init(isCurrentBuilding: boolean, point: BuildingPoint, build: boolean = false){
         this.point = point
         // this.buildButton = this.node.getChildByName("Marker")
-        
-        
+        this.marker = this.node.getChildByName("Marker")
+        this.markerDefaultSize = new Vec3(this.marker.scale)
         if(isCurrentBuilding){
             this.buildButton = BuildingManager.Instance.getbutton().node
             if(this.buildButton == null)
                 this.buildButton = this.node.getChildByName("Button")
-            this.buildButton.worldPosition = this.node.getChildByName("Marker").worldPosition
+            this.buildButton.worldPosition = this.marker.worldPosition
             this.buildButton.active = true
             let event: EventHandler = new EventHandler()
             event.target = this.node
@@ -133,9 +135,8 @@ export class Building extends Component {
             event.handler = "setChoice"
             this.buildButton.getComponent(Button).clickEvents.push(event)
             this.buildButton.getComponent(Button).interactable = true
-            this.node.getChildByName("Marker").getComponent(Marker).init(true)
-            // console.log(this.buildButton.getComponent(Button).clickEvents.length);
-            // this.buildButton.on(Node.EventType.TOUCH_START, this.setChoice, this)
+            this.marker.getComponent(Marker).init(true)
+            // this.marker.parent = ChoiceManage.Instance.node
         }
         else{
             // if(this.buildButton != null)
@@ -148,9 +149,9 @@ export class Building extends Component {
     }
     public setNextMarker(){
         this.buildButton = BuildingManager.Instance.getbutton().node
-        this.buildButton.worldPosition = this.node.getChildByName("Marker").worldPosition
-        this.node.getChildByName("Marker").active = true
-        this.node.getChildByName("Marker").getComponent(Marker).init(false)
+        this.buildButton.worldPosition = this.marker.worldPosition
+        this.marker.active = true
+        this.marker.getComponent(Marker).init(false)
         let event: EventHandler = new EventHandler()
         event.target = this.node
         event.component = "Building"
@@ -159,6 +160,12 @@ export class Building extends Component {
         this.buildButton.getComponent(Button).clickEvents.push(event)
     }
     public cantBuild(){
+        Tween.stopAllByTarget(this.marker)
+        this.marker.scale = new Vec3(this.markerDefaultSize)
+        tween(this.marker)
+        .by(0.2, {scale: new Vec3(0.1,0.1)}, {easing: "sineIn"})
+        .by(0.2, {scale: new Vec3(-0.1,-0.1)}, {easing: "sineOut"})
+        .start()
         SoundManager.Instance.playUnavalible()
     }
     public fadeIn(){
@@ -184,23 +191,22 @@ export class Building extends Component {
     }
     public fadeOut(){
         SoundManager.Instance.setSound("island_construct2", this.node.parent)
-        // let prt: Node = instantiate(this.buildParticles)
-        // prt.parent = this.node.parent.parent.children[1]
-        // console.log(prt.parent.name)
-        // prt.position = new Vec3(0,0,0)
         ParticleManager.Instance.setBuildParticles(this.node.parent.parent.children[1])
         tween(this.node.getComponent(UIOpacity))
         .to(1, {opacity: 0})
         .start()
     }
     public setChoice(){
-        if(!GameStateMachine.Instance.stateMachine.isCurrentState("idleState"))
+        if(GameStateMachine.Instance.stateMachine.isCurrentState("choiseState"))
             return
-        tween(this.node.getChildByName("Marker"))
-        .by(0.2, {scale: new Vec3(0.1,0.1)}, {easing: 'bounceOut'})
-        .by(0.2, {scale: new Vec3(-0.1,-0.1)}, {easing: 'bounceOut'})
+        Tween.stopAllByTarget(this.marker)
+        this.marker.scale = new Vec3(this.markerDefaultSize)
+        tween(this.marker)
+        .by(0.2, {scale: new Vec3(0.1,0.1)}, {easing: "sineIn"})
+        .by(0.2, {scale: new Vec3(-0.1,-0.1)}, {easing: "sineOut"})
         .call(() => {
-            this.point.setChoice()
+            if(GameStateMachine.Instance.stateMachine.isCurrentState("idleState"))
+                this.point.setChoice()
         })
         .start()
     }
@@ -211,5 +217,8 @@ export class Building extends Component {
     }
     public getScale(): number{
         return this.scale
+    }
+    public getShift(): Vec2{
+        return this.shift
     }
 }

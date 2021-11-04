@@ -90,6 +90,9 @@ export class ChoiceManage extends Component {
             transform.width = vec.x
             transform.height = vec.y
             let scale = building.getComponent(Building).getScale()
+            let shift = building.getComponent(Building).getShift()
+            let s = new Vec2(parent.getComponent(UITransform).width, parent.getComponent(UITransform).height)
+            transform.node.position = new Vec3(shift.x * s.x, shift.y * s.y)
             transform.node.scale = new Vec3(scale, scale)
             if(building.getChildByName("visuals").getChildByName("Mask") != null)
                 building.getChildByName("visuals").getChildByName("Mask").active = false
