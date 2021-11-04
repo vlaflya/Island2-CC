@@ -437,6 +437,11 @@
     },
     "horizontal": false,
     "scale": 4,
+    "shift": {
+      "__type__": "cc.Vec2",
+      "x": -0.25,
+      "y": 0
+    },
     "_id": ""
   },
   {

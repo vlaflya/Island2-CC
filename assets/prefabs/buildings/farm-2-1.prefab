@@ -883,7 +883,12 @@
       "__expectedType__": "cc.Prefab"
     },
     "horizontal": false,
-    "scale": 1.2,
+    "scale": 1.3,
+    "shift": {
+      "__type__": "cc.Vec2",
+      "x": 0.05,
+      "y": 0
+    },
     "_id": ""
   },
   {

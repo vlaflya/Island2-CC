@@ -916,7 +916,6 @@
       "__id__": 60
     },
     "interactable": true,
-    "buildButton": null,
     "tapParticles": {
       "__uuid__": "2ee3e85a-4963-4b45-b38e-33021822e63a",
       "__expectedType__": "cc.Prefab"
@@ -926,9 +925,12 @@
       "__expectedType__": "cc.Prefab"
     },
     "horizontal": false,
-    "Zebra": null,
-    "shortPhrase": null,
-    "longPhrase": null,
+    "scale": 1,
+    "shift": {
+      "__type__": "cc.Vec2",
+      "x": -0.1,
+      "y": 0
+    },
     "_id": ""
   },
   {
