@@ -12,10 +12,10 @@ const { ccclass, property } = _decorator;
 @ccclass('Building')
 export class Building extends Component {
     @property({type: Boolean}) interactable: boolean = true
-    private buildButton: Node = null
     @property({type: Prefab}) tapParticles: Prefab
     @property({type: Prefab}) buildParticles: Prefab
     @property({type: Boolean}) horizontal = false
+    @property({type: Boolean}) markerOnTop = false
     @property({type: CCFloat}) scale: number = 1
     @property({type: Vec2}) shift = new Vec2(0,0)
     private Zebra: Node = null
@@ -24,7 +24,7 @@ export class Building extends Component {
     private longPhrase: AudioSource = null
     private marker: Node = null
     private markerDefaultSize: Vec3
-    
+    private buildButton: Node = null
     private zebraStartPos: Vec3
     private startScale: Vec3 = null
     private point: BuildingPoint = null
@@ -57,8 +57,7 @@ export class Building extends Component {
                 playAnimation = SoundManager.Instance.getVoiceQueue(this.shortPhrase, this.longPhrase, this.node)
             }
             if(this.point.getCount() == 0){
-                let r = randomRangeInt(0, 3)
-                SoundManager.Instance.setSound("island2_ruin_" + r, this.node)
+                SoundManager.Instance.playRuin()
             }
         }
         if(this.Zebra == null){
@@ -127,7 +126,6 @@ export class Building extends Component {
             this.buildButton = BuildingManager.Instance.getbutton().node
             if(this.buildButton == null)
                 this.buildButton = this.node.getChildByName("Button")
-            this.buildButton.worldPosition = this.marker.worldPosition
             this.buildButton.active = true
             let event: EventHandler = new EventHandler()
             event.target = this.node
@@ -136,22 +134,19 @@ export class Building extends Component {
             this.buildButton.getComponent(Button).clickEvents.push(event)
             this.buildButton.getComponent(Button).interactable = true
             this.marker.getComponent(Marker).init(true)
-            // this.marker.parent = ChoiceManage.Instance.node
-        }
-        else{
-            // if(this.buildButton != null)
-            //     this.buildButton.active = false
-        }
+            this.buttonScale()
             
+        }
         if(!build)
             return
         this.fadeIn()
     }
     public setNextMarker(){
         this.buildButton = BuildingManager.Instance.getbutton().node
-        this.buildButton.worldPosition = this.marker.worldPosition
+        
         this.marker.active = true
         this.marker.getComponent(Marker).init(false)
+        this.buttonScale()
         let event: EventHandler = new EventHandler()
         event.target = this.node
         event.component = "Building"
@@ -159,6 +154,21 @@ export class Building extends Component {
         this.buildButton.getComponent(Button).clickEvents = []
         this.buildButton.getComponent(Button).clickEvents.push(event)
     }
+
+    private buttonScale(){
+        this.buildButton.worldPosition = this.marker.worldPosition
+        this.buildButton.getComponent(UITransform).width = this.marker.getComponent(UITransform).width
+        this.buildButton.getComponent(UITransform).height = this.marker.getComponent(UITransform).height
+        this.buildButton.scale = this.marker.scale
+        if(this.markerOnTop){
+            this.marker.parent = ChoiceManage.Instance.node
+            this.marker.getComponent(UITransform).width = this.buildButton.getComponent(UITransform).width
+            this.marker.getComponent(UITransform).height = this.buildButton.getComponent(UITransform).height
+            this.marker.worldPosition = this.buildButton.worldPosition
+            this.marker.scale = new Vec3(this.node.scale.x * this.buildButton.scale.x, this.node.scale.y * this.buildButton.scale.y, 1)
+        }
+    }
+
     public cantBuild(){
         Tween.stopAllByTarget(this.marker)
         this.marker.scale = new Vec3(this.markerDefaultSize)
@@ -172,27 +182,28 @@ export class Building extends Component {
         this.node.getComponent(UIOpacity).opacity = 255
         
         tween(this.node.getComponent(UIOpacity))
-        .to(1, {opacity: 255})
+        .to(0.5, {opacity: 255})
         .call(() => {
             ParticleManager.Instance.setParticlesAfterBuild(this.node.getChildByName("visuals").getComponent(UITransform))
+        })
+        .call(() => {
             SoundManager.Instance.setSound("island2_build_finish", this.node)
-            
+            BuildingManager.Instance.setNextMarker()
         })
         .delay(3)
         .call(() =>{
             if(this.shortPhrase != null)
                 SoundManager.Instance.playUniqLine(this.shortPhrase)
         })
-        .delay(1)
-        .call(() =>{
-            BuildingManager.Instance.setNextMarker()
-        })
         .start()
     }
     public fadeOut(){
         SoundManager.Instance.setSound("island_construct2", this.node.parent)
-        ParticleManager.Instance.setBuildParticles(this.node.parent.parent.children[1])
         tween(this.node.getComponent(UIOpacity))
+        .delay(1)
+        .call(() =>{
+            ParticleManager.Instance.setBuildParticles(this.node.parent.parent.children[1])
+        })
         .to(1, {opacity: 0})
         .start()
     }

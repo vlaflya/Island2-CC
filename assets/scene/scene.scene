@@ -1572,7 +1572,7 @@
     "node": {
       "__id__": 53
     },
-    "_enabled": false,
+    "_enabled": true,
     "__prefab": null,
     "_visFlags": 0,
     "_customMaterial": null,
@@ -7560,9 +7560,20 @@
         "__expectedType__": "cc.AudioClip"
       }
     ],
-    "background": {
-      "__id__": 3
-    },
+    "ruinsClips": [
+      {
+        "__uuid__": "4ed782dd-e172-492e-aab7-ec853bcfe4b8",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "f751814c-1655-4078-b8f8-70cb5e689477",
+        "__expectedType__": "cc.AudioClip"
+      },
+      {
+        "__uuid__": "0e77e5ae-dec6-45f0-a752-ece633e46400",
+        "__expectedType__": "cc.AudioClip"
+      }
+    ],
     "queueAsset": {
       "__uuid__": "4b15079d-e94f-4dca-b378-4be390fd37d5",
       "__expectedType__": "cc.JsonAsset"

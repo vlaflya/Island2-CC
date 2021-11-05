@@ -9,9 +9,8 @@ export class SoundManager extends Component {
     @property({type: [AudioClip]}) zebraSounds: Array<AudioClip> = []
     @property({type: [AudioClip]}) tutorialSounds: Array<AudioClip> = []
     @property({type: [AudioClip]}) unavalibleClips: Array<AudioClip> = []
+    @property({type: [AudioClip]}) ruinsClips: Array<AudioClip> = []
     @property({type: CCFloat}) inactiveDelay
-    @property({type: Node}) background: Node = null
-    private countEmptyClicks = 0
     @property({type: CCFloat}) maxEmptyClicks
     private currentSource: AudioSource = null
     private currentQueueCount: number = 0
@@ -21,22 +20,11 @@ export class SoundManager extends Component {
     
     onLoad(){
         SoundManager.Instance = this
-        this.background.on(Node.EventType.TOUCH_START, this.emptyClipClick, this)
         let r = randomRangeInt(0, 2)
         this.setSound("island2_hello_" + r, this.node)
         this.readQueue()
-        // tween(this)
-        // .delay(this.inactiveDelay)
-        // .call(() =>{
-        //     this.tryPlayTutorial()
-        // })
-        // .repeatForever()
-        // .start()
     }
-    
-    private emptyClipClick(){
-        
-    }
+
     private prevRandomTutor = 0
     private tryPlayTutorial(touch?: Touch, event?: EventTouch){
         if(!GameStateMachine.Instance.stateMachine.isCurrentState("idleState"))
@@ -53,7 +41,7 @@ export class SoundManager extends Component {
             else
                 r--
         }
-        this.prevRandom = r
+        this.prevRandomTutor = r
         this.trySetLine(this.tutorialSounds[r], this.node)
     }
 
@@ -68,6 +56,18 @@ export class SoundManager extends Component {
         }
         this.prevRandom = r
         this.trySetLine(this.unavalibleClips[r], this.node)
+    }
+    private prevRandomRuin = 0
+    public playRuin(){
+        let r = randomRangeInt(0, this.ruinsClips.length)
+        if(r == this.prevRandomRuin){
+            if(r == 0)
+                r++
+            else
+                r--
+        }
+        this.prevRandomRuin = r
+        this.trySetLine(this.ruinsClips[r], this.node)
     }
 
     private readQueue(){
