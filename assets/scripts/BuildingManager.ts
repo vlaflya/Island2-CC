@@ -42,6 +42,7 @@ export class BuildingManager extends Component {
             this.afterBuild(hasSave)
         }
         else{
+            console.log(this.choiceCount + " " + this.sequenceNames.length);
             this.normalBuild(hasSave)
         }
     }
@@ -86,7 +87,7 @@ export class BuildingManager extends Component {
         var today = new Date();
         this.lastDate = today.toString()
         this.choiceCount++
-        if(this.choiceCount == this.sequenceLength + this.sequenceNames.length)
+        if(this.choiceCount == this.sequenceLength + this.sequenceNames.length && this.sequenceLength != 0)
             this.choiceCount = this.sequenceLength
     }
     public setNextMarker(){
