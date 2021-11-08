@@ -36,8 +36,6 @@ export class Building extends Component {
         let name = this.node.parent.parent.name + "-" + this.point.getCount() + "-1"
         if(this.node.getChildByName(name) != null && this.point != null)
             this.shortPhrase = this.node.getChildByName(name).getComponent(AudioSource)
-        else
-            console.log(name);
         name = this.node.parent.parent.name + "-" + this.point.getCount() + "-2"
         if(this.node.getChildByName(name) != null && this.point != null)
             this.longPhrase = this.node.getChildByName(name).getComponent(AudioSource)

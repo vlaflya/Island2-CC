@@ -9,9 +9,11 @@ const { ccclass, property } = _decorator;
 @ccclass('BuildingManager')
 export class BuildingManager extends Component {
     @property({type: JsonAsset}) sequence: JsonAsset
+    @property({type: JsonAsset}) afterSequence: JsonAsset
     @property({type: Button}) buildButton: Button
     @property({type: [BuildingPoint]}) buildingPoints: Array<BuildingPoint> = []
     private choiceCount: number = 0
+    private sequenceLength: number = 0
     private lastDate: string = ""
     public static Instance: BuildingManager
     private sequenceNames: Array<String> = []
@@ -33,8 +35,20 @@ export class BuildingManager extends Component {
         else{
             hasSave = true
         }
+        this.readJson(this.sequence)
+        if(this.choiceCount >= this.sequenceNames.length){
+            this.sequenceLength = this.sequenceNames.length
+            this.readJson(this.afterSequence)
+            this.afterBuild(hasSave)
+        }
+        else{
+            this.normalBuild(hasSave)
+        }
+    }
 
-        let read: readBuildings = JSON.parse(JSON.stringify(this.sequence.json))
+    private readJson(asset: JsonAsset){
+        let read: readBuildings = JSON.parse(JSON.stringify(asset.json))
+        this.sequenceNames = []
         let st: string = ""
         if(this.sequenceNames.length == 0){
             for(let c = 0; c < read.sequence.length; c++){
@@ -47,9 +61,19 @@ export class BuildingManager extends Component {
             }
             this.sequenceNames.push(st)
         }
-        if(this.choiceCount == this.sequenceNames.length)
-            return
-        console.log(this.sequenceNames[this.choiceCount])
+    }
+
+    private afterBuild(hasSave: boolean){
+        console.log("after")
+        this.buildingPoints.forEach(point => {
+            if(!hasSave)
+                point.init("0-1",point.node.name == this.sequenceNames[this.choiceCount - this.sequenceLength])
+            if(point.node.name == this.sequenceNames[this.choiceCount - this.sequenceLength]){
+                ChoiceManage.Instance.preload(point.node.name, point.getCount(), true, point.getMaxBuildCount())
+            }
+        });
+    }
+    private normalBuild(hasSave: boolean){
         this.buildingPoints.forEach(point => {
             if(!hasSave)
                 point.init("0-1",point.node.name == this.sequenceNames[this.choiceCount])
@@ -62,12 +86,15 @@ export class BuildingManager extends Component {
         var today = new Date();
         this.lastDate = today.toString()
         this.choiceCount++
+        if(this.choiceCount == this.sequenceLength + this.sequenceNames.length)
+            this.choiceCount = this.sequenceLength
     }
     public setNextMarker(){
-        if(this.choiceCount == this.sequenceNames.length)
-            return
+        let markerIndex = this.choiceCount
+        if(this.sequenceLength != 0)
+            markerIndex -= this.sequenceLength
         this.buildingPoints.forEach(point => {
-            if(point.node.name == this.sequenceNames[this.choiceCount])
+            if(point.node.name == this.sequenceNames[markerIndex])
                 point.setNextMarker()
         });
     }

@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, assetManager, instantiate, Vec3, tween, UIOpacity, Prefab } from 'cc';
+import { _decorator, Component, Node, assetManager, instantiate, Vec3, tween, UIOpacity, Prefab, CCFloat, CCInteger } from 'cc';
 import { Building } from './Building';
 import { ChoiceManage } from './ChoiceManage';
 import { SoundManager } from './SoundManager';
@@ -7,6 +7,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass('BuildingPoint')
 export class BuildingPoint extends Component {
+    @property({type: CCInteger}) maxBuildCount: number
     private choiceCount: number = 0
     private choiceOption: number = 0
 
@@ -54,5 +55,8 @@ export class BuildingPoint extends Component {
     }
     public getCount(): number{
         return this.choiceCount
+    }
+    public getMaxBuildCount(): number{
+        return this.maxBuildCount
     }
 }

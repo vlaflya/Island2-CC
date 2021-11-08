@@ -77,21 +77,54 @@ export class ChoiceManage extends Component {
             GameStateMachine.Instance.exitIdle("choiseState")
         }
     }
-
-    public preload(name: string,  optionCount: number){
+    private afterBuild: boolean = false
+    private randomOption1: number = 0
+    private randomOption2: number = 0
+    private randomCount: number = 0
+    public preload(name: string,  optionCount: number, afterBuild: boolean = false, maxBuildCount: number = 0){
         this.optionCount = optionCount
+        this.afterBuild = afterBuild
         assetManager.loadBundle('Buildings', (err, load) => {
             this.bundle = load
-            let st: string = name + "-" + this.optionCount + "-1"
-            if(this.option1.node.children.length > 0)
-                this.option1.node.children[0].destroy()
-            this.loadPrefab(st, this.option1.node)
-            st = name + "-" + this.optionCount + "-2"
-            if(this.option2.node.children.length > 0)
-                this.option2.node.children[0].destroy()
-            this.loadPrefab(st, this.option2.node)
+            let st: string
+            if(afterBuild){
+                let r  = randomRangeInt(1, 3)
+                this.randomOption1 = r
+                st = name + "-" + this.optionCount + "-" + r;
+                console.log("option1 " + st)
+                if(this.option1.node.children.length > 0)
+                    this.option1.node.children[0].destroy()
+                this.loadPrefab(st, this.option1.node)
+
+                let rCount = randomRangeInt(1, maxBuildCount)
+                if(rCount == optionCount){
+                    if(rCount == 1)
+                        rCount++
+                    else
+                        rCount--
+                }
+                this.randomCount = rCount
+                r = randomRangeInt(1, 3)
+                this.randomOption2 = r
+                st = name + "-" + rCount + "-" + r;
+                console.log("option2 " + st)
+                if(this.option2.node.children.length > 0)
+                    this.option2.node.children[0].destroy()
+                this.loadPrefab(st, this.option2.node)
+            }
+            else{
+                st = name + "-" + this.optionCount + "-1"
+                if(this.option1.node.children.length > 0)
+                    this.option1.node.children[0].destroy()
+                this.loadPrefab(st, this.option1.node)
+                st = name + "-" + this.optionCount + "-2"
+                if(this.option2.node.children.length > 0)
+                    this.option2.node.children[0].destroy()
+                this.loadPrefab(st, this.option2.node)
+            }
         });
     }
+
     private  loadPrefab(st: string, parent: Node){
         console.log(st);
         this.bundle.load(st, (err, asset) =>{
@@ -122,18 +155,26 @@ export class ChoiceManage extends Component {
             return
         }
         this.choosePhase = false
-        this.sendChoice("-1")
         this.paperL.setAnimation(0, "4-Choice", false)
         this.paperR.setAnimation(0, "3-Down", false)
+        if(this.afterBuild){
+            this.sendChoice(this.optionCount + "-" +  this.randomOption1)
+        }
+        else
+            this.sendChoice(this.optionCount + "-1")
+        
     }
     public makeChoice2(){
         if(!this.choosePhase){
             return
         }
         this.choosePhase = false
-        this.sendChoice("-2")
         this.paperR.setAnimation(0, "4-Choice", false)
         this.paperL.setAnimation(0, "3-Down", false)
+        if(this.afterBuild)
+            this.sendChoice(this.randomCount + "-" + this.randomOption2)
+        else
+            this.sendChoice(this.optionCount + "-2")   
     }
     
     private sendChoice(option: string){
@@ -150,8 +191,7 @@ export class ChoiceManage extends Component {
         .call(() => {
             SoundManager.Instance.setSound("island_close", this.node)
             this.choiceWindow.active = false
-            let st = this.optionCount + option
-            this.currentPoint.build(st)
+            this.currentPoint.build(option)
             BuildingManager.Instance.madeChoise()
             GameStateMachine.Instance.madeChoise()
         })

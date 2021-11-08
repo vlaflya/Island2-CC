@@ -1140,6 +1140,7 @@
     },
     "_enabled": true,
     "__prefab": null,
+    "maxBuildCount": 4,
     "_id": "434KA5u+xIf4lONh/p15qs"
   },
   {
@@ -1477,6 +1478,7 @@
     },
     "_enabled": true,
     "__prefab": null,
+    "maxBuildCount": 4,
     "_id": "4fpIxTu5pIjaV4oleEbZHV"
   },
   {
@@ -1876,6 +1878,10 @@
       "__uuid__": "45d8ef08-394b-45b9-951e-1c06d53101bf",
       "__expectedType__": "cc.JsonAsset"
     },
+    "afterSequence": {
+      "__uuid__": "088f1736-070d-4621-9d7d-1d5caf70adbc",
+      "__expectedType__": "cc.JsonAsset"
+    },
     "buildButton": {
       "__id__": 63
     },
@@ -2206,6 +2212,7 @@
     },
     "_enabled": true,
     "__prefab": null,
+    "maxBuildCount": 4,
     "_id": "97LzS8GcJAF5fjpc+yiY1l"
   },
   {
@@ -2543,6 +2550,7 @@
     },
     "_enabled": true,
     "__prefab": null,
+    "maxBuildCount": 4,
     "_id": "cdzu3IPIFDS5qHa7vBkiAV"
   },
   {
@@ -2880,6 +2888,7 @@
     },
     "_enabled": true,
     "__prefab": null,
+    "maxBuildCount": 4,
     "_id": "8bNtK9TcJPCbPGdwkgIN5N"
   },
   {
@@ -3217,6 +3226,7 @@
     },
     "_enabled": true,
     "__prefab": null,
+    "maxBuildCount": 4,
     "_id": "43TIwH6a5Jep7BAWsHUeXk"
   },
   {
@@ -3554,6 +3564,7 @@
     },
     "_enabled": true,
     "__prefab": null,
+    "maxBuildCount": 3,
     "_id": "afqZExze9PKbSncZbr7NFu"
   },
   {
@@ -3891,6 +3902,7 @@
     },
     "_enabled": true,
     "__prefab": null,
+    "maxBuildCount": 4,
     "_id": "5a9CQtNnBGK5ucrua3QzkT"
   },
   {
@@ -4565,6 +4577,7 @@
     },
     "_enabled": true,
     "__prefab": null,
+    "maxBuildCount": 3,
     "_id": "dfRX5qrChMHI5zbF/Tf5Og"
   },
   {
@@ -4889,6 +4902,7 @@
     },
     "_enabled": true,
     "__prefab": null,
+    "maxBuildCount": 5,
     "_id": "feAov3u71CJKpaRPm1173o"
   },
   {
