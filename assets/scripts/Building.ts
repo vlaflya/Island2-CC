@@ -161,7 +161,7 @@ export class Building extends Component {
         this.buildButton.getComponent(UITransform).height = this.marker.getComponent(UITransform).height
         this.buildButton.scale = this.marker.scale
         if(this.markerOnTop){
-            this.marker.parent = ChoiceManage.Instance.node
+            this.marker.setParent(ChoiceManage.Instance.node)
             this.marker.getComponent(UITransform).width = this.buildButton.getComponent(UITransform).width
             this.marker.getComponent(UITransform).height = this.buildButton.getComponent(UITransform).height
             this.marker.worldPosition = this.buildButton.worldPosition
@@ -180,7 +180,6 @@ export class Building extends Component {
     }
     public fadeIn(){
         this.node.getComponent(UIOpacity).opacity = 255
-        
         tween(this.node.getComponent(UIOpacity))
         .to(0.5, {opacity: 255})
         .call(() => {
@@ -199,6 +198,10 @@ export class Building extends Component {
     }
     public fadeOut(){
         SoundManager.Instance.setSound("island_construct2", this.node.parent)
+        this.marker.setParent(this.node)
+        this.marker.scale = new Vec3(this.markerDefaultSize)
+        this.marker.worldPosition = this.buildButton.worldPosition
+
         tween(this.node.getComponent(UIOpacity))
         .delay(1)
         .call(() =>{
@@ -211,7 +214,7 @@ export class Building extends Component {
         if(GameStateMachine.Instance.stateMachine.isCurrentState("choiseState"))
             return
         Tween.stopAllByTarget(this.marker)
-        this.marker.scale = new Vec3(this.markerDefaultSize)
+        // this.marker.scale = new Vec3(this.markerDefaultSize)
         tween(this.marker)
         .by(0.2, {scale: new Vec3(0.1,0.1)}, {easing: "sineIn"})
         .by(0.2, {scale: new Vec3(-0.1,-0.1)}, {easing: "sineOut"})

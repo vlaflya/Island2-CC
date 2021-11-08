@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, Sprite, assetManager, SpriteFrame, builtinResMgr, path, instantiate, Vec3, AudioClip, AudioSource, tween, AssetManager, Prefab, UITransform, Vec2, sp, randomRangeInt } from 'cc';
+import { _decorator, Component, Node, Sprite, assetManager, SpriteFrame, builtinResMgr, path, instantiate, Vec3, AudioClip, AudioSource, tween, AssetManager, Prefab, UITransform, Vec2, sp, randomRangeInt, EventTouch } from 'cc';
 import { Building } from './Building';
 import { GameStateMachine } from './GameStateMachine';
 import { BuildingManager } from './BuildingManager';
@@ -10,7 +10,7 @@ const { ccclass, property } = _decorator;
 @ccclass('ChoiceManage')
 export class ChoiceManage extends Component {
     public static Instance: ChoiceManage
-    @property({type: Node}) selectWindow: Node
+    @property({type: Node}) choiceWindow: Node
     @property({type: UITransform}) option1: UITransform
     @property({type: UITransform}) option2: UITransform
     @property({type: sp.Skeleton}) paperL: sp.Skeleton
@@ -29,24 +29,42 @@ export class ChoiceManage extends Component {
         this.paperL.timeScale = 0
         this.paperR.timeScale = 0
         this.zebra.setMix("2-Idle-v2", "3-Choice", 0.5)
+        this.choiceWindow.on(Node.EventType.TOUCH_START, this.closeWindow, this)
+        this.paperL.setEventListener((x, ev) => {this.listner(x, ev)})
     }
+
+    public closeWindow(touch: Touch, event: EventTouch){
+        console.log("okes")
+        if(!GameStateMachine.Instance.stateMachine.isCurrentState("choiseState"))
+            return
+        // this.paperL.timeScale = -1
+        // this.paperR.timeScale = -1
+        // this.zebra.timeScale = -1
+        this.paperL.setAnimation(0, "4-Choice", false)
+        this.paperR.setAnimation(0, "4-Choice", false)
+        this.zebra.setAnimation(0, "4-Out", false)
+        this.choiceWindow.active = false
+        GameStateMachine.Instance.stateMachine.exitState();
+    }
+
     public createChoice(name: string, building: BuildingPoint){
         if(!GameStateMachine.Instance.stateMachine.isCurrentState("idleState"))
             return
-        GameStateMachine.Instance.exitIdle("choiseState")
+        
         SoundManager.Instance.setSound("island_marker", this.node)
         this.choosePhase = true
         this.currentPoint = building
+        this.choiceWindow.active = true
         this.paperL.setAnimation(0, "1-Start", false)
         this.paperL.addAnimation(0, "2-Idle", true)
         this.paperL.timeScale = 1
-        this.paperL.setEventListener((x, ev) => {this.listner(x, ev)})
         let r = randomRangeInt(0,3)
         SoundManager.Instance.setSound("island2_marker_can_build_" + r, this.node)
     }
 
     listner(x, ev){
-        console.log(ev.data.name);
+        if(!GameStateMachine.Instance.stateMachine.isCurrentState("idleState"))
+            return
         if(ev.data.name == "delay-paper-start"){
             this.paperR.setAnimation(0, "1-Start", false)
             this.paperR.addAnimation(0, "2-Idle", true)
@@ -56,6 +74,7 @@ export class ChoiceManage extends Component {
             this.zebra.setAnimation(0, "1-Start", false)
             this.zebra.addAnimation(0, "2-Idle-v2", true)
             this.zebra.timeScale = 1
+            GameStateMachine.Instance.exitIdle("choiseState")
         }
     }
 
@@ -130,7 +149,7 @@ export class ChoiceManage extends Component {
         .delay(0.5)
         .call(() => {
             SoundManager.Instance.setSound("island_close", this.node)
-            //this.selectWindow.active = false
+            this.choiceWindow.active = false
             let st = this.optionCount + option
             this.currentPoint.build(st)
             BuildingManager.Instance.madeChoise()
