@@ -13,6 +13,7 @@ export class BuildingManager extends Component {
     @property({type: JsonAsset}) afterSequence: JsonAsset
     @property({type: Button}) buildButton: Button
     @property({type: [BuildingPoint]}) buildingPoints: Array<BuildingPoint> = []
+    @property({type: Node}) tutorialPointer: Node
     @property({type: AudioClip}) tutor1: AudioClip
     @property({type: AudioClip}) tutor2: AudioClip
     @property({type: AudioClip}) startPharase1: AudioClip
@@ -52,9 +53,11 @@ export class BuildingManager extends Component {
             this.normalBuild(hasSave)
         }
         if(this.choiceCount == 0){
+            this.tutorialPointer.active = true
             SoundManager.Instance.trySetLine(this.tutor1, this.node)
         }
         else{
+            this.tutorialPointer.active = false
             let r = randomRangeInt(0, 2)
             switch(r){
                 case (0):{
@@ -106,6 +109,8 @@ export class BuildingManager extends Component {
         });
     }
     public madeChoise(){
+        if(this.tutorialPointer.active)
+            this.tutorialPointer.active = false
         var today = new Date();
         this.canBuild = false
         this.lastDate = today.toString()
