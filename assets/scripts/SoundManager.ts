@@ -1,17 +1,18 @@
 
-import { _decorator, Component, Node, AudioClip, AudioSource, assetManager, randomRangeInt, JsonAsset, UITransform, EventTouch, tween, CCFloat } from 'cc';
+import { _decorator, Component, Node, AudioClip, AudioSource, assetManager, randomRangeInt, JsonAsset, UITransform, EventTouch, tween, CCFloat, Tween } from 'cc';
 import { GameStateMachine } from './GameStateMachine';
+import { BuildingManager } from './BuildingManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('SoundManager')
 export class SoundManager extends Component {
     @property({type: [AudioClip]}) clips: Array<AudioClip> = []
     @property({type: [AudioClip]}) zebraSounds: Array<AudioClip> = []
-    @property({type: [AudioClip]}) tutorialSounds: Array<AudioClip> = []
+    @property({type: [AudioClip]}) canBuildVoices: Array<AudioClip> = []
+    @property({type: [AudioClip]}) cantBuildVoices: Array<AudioClip> = []
     @property({type: [AudioClip]}) unavalibleClips: Array<AudioClip> = []
     @property({type: [AudioClip]}) ruinsClips: Array<AudioClip> = []
     @property({type: CCFloat}) inactiveDelay
-    @property({type: CCFloat}) maxEmptyClicks
     private currentSource: AudioSource = null
     private currentQueueCount: number = 0
     @property({type: JsonAsset}) queueAsset: JsonAsset
@@ -20,13 +21,24 @@ export class SoundManager extends Component {
     
     onLoad(){
         SoundManager.Instance = this
-        let r = randomRangeInt(0, 2)
-        this.setSound("island2_hello_" + r, this.node)
         this.readQueue()
+        
+    }
+    public startTimer(){
+        tween(this)
+        .delay(this.inactiveDelay)
+        .call(() =>{
+            this.tryPlayTutorial()
+        })
+        .repeatForever()
+        .start()
+    }
+    public stopTimer(){
+        Tween.stopAllByTarget(this)
     }
 
     private prevRandomTutor = 0
-    private tryPlayTutorial(touch?: Touch, event?: EventTouch){
+    private tryPlayTutorial(){
         if(!GameStateMachine.Instance.stateMachine.isCurrentState("idleState"))
             return
         if(this.currentSource != null){
@@ -34,7 +46,7 @@ export class SoundManager extends Component {
                 return
             }
         }
-        let r = randomRangeInt(0, this.tutorialSounds.length)
+        let r = randomRangeInt(0, this.canBuildVoices.length)
         if(r == this.prevRandomTutor){
             if(r == 0)
                 r++
@@ -42,7 +54,10 @@ export class SoundManager extends Component {
                 r--
         }
         this.prevRandomTutor = r
-        this.trySetLine(this.tutorialSounds[r], this.node)
+        if(BuildingManager.Instance.getBuildFlag())
+            this.trySetLine(this.canBuildVoices[r], this.node)
+        else
+            this.trySetLine(this.cantBuildVoices[r], this.node)
     }
 
     private prevRandom = 0

@@ -90,13 +90,13 @@ export class ChoiceManage extends Component {
             if(afterBuild){
                 let r  = randomRangeInt(1, 3)
                 this.randomOption1 = r
-                st = name + "-" + this.optionCount + "-" + r;
+                st = name + "-" + (maxBuildCount - 1) + "-" + r;
                 console.log("option1 " + st)
                 if(this.option1.node.children.length > 0)
                     this.option1.node.children[0].destroy()
                 this.loadPrefab(st, this.option1.node)
 
-                let rCount = randomRangeInt(1, maxBuildCount)
+                let rCount = randomRangeInt(1, maxBuildCount - 1)
                 if(rCount == optionCount){
                     if(rCount == 1)
                         rCount++

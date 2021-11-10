@@ -1,9 +1,10 @@
 
-import { _decorator, Component, Node, JsonAsset, assetManager, Prefab, path, Button } from 'cc';
+import { _decorator, Component, Node, JsonAsset, assetManager, Prefab, path, Button, randomRangeInt, AudioClip } from 'cc';
 import { Building } from './Building';
 import { Bridge } from './Bridge';
 import { BuildingPoint } from './BuildingPoint';
 import { ChoiceManage } from './ChoiceManage';
+import { SoundManager } from './SoundManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('BuildingManager')
@@ -12,6 +13,12 @@ export class BuildingManager extends Component {
     @property({type: JsonAsset}) afterSequence: JsonAsset
     @property({type: Button}) buildButton: Button
     @property({type: [BuildingPoint]}) buildingPoints: Array<BuildingPoint> = []
+    @property({type: AudioClip}) tutor1: AudioClip
+    @property({type: AudioClip}) tutor2: AudioClip
+    @property({type: AudioClip}) startPharase1: AudioClip
+    @property({type: AudioClip}) startPharase2: AudioClip
+    
+    private canBuild: boolean = true
     private choiceCount: number = 0
     private sequenceLength: number = 0
     private lastDate: string = ""
@@ -27,10 +34,9 @@ export class BuildingManager extends Component {
     public init(save: JsonAsset = null){
         console.log("oke")
         let hasSave: boolean
-        let newDay: boolean = true
         if(save == null){
             hasSave = false
-            newDay = true
+            this.canBuild = true
         }
         else{
             hasSave = true
@@ -44,6 +50,22 @@ export class BuildingManager extends Component {
         else{
             console.log(this.choiceCount + " " + this.sequenceNames.length);
             this.normalBuild(hasSave)
+        }
+        if(this.choiceCount == 0){
+            SoundManager.Instance.trySetLine(this.tutor1, this.node)
+        }
+        else{
+            let r = randomRangeInt(0, 2)
+            switch(r){
+                case (0):{
+                    SoundManager.Instance.trySetLine(this.startPharase1, this.node)
+                    break
+                }
+                case (1):{
+                    SoundManager.Instance.trySetLine(this.startPharase2, this.node)
+                    break
+                }
+            }
         }
     }
 
@@ -85,6 +107,7 @@ export class BuildingManager extends Component {
     }
     public madeChoise(){
         var today = new Date();
+        this.canBuild = false
         this.lastDate = today.toString()
         this.choiceCount++
         if(this.choiceCount == this.sequenceLength + this.sequenceNames.length && this.sequenceLength != 0)
@@ -99,7 +122,9 @@ export class BuildingManager extends Component {
                 point.setNextMarker()
         });
     }
-    
+    public getBuildFlag(): boolean{
+        return this.canBuild
+    }
 }
 interface readBuildings{
     sequence: string

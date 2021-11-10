@@ -3,6 +3,7 @@ import { _decorator, Component, Node, Game, JsonAsset, Asset } from 'cc';
 import { GeneralStateMachine } from './GeneralStateMachine';
 import { Bridge } from './Bridge';
 import { BuildingManager } from './BuildingManager';
+import { SoundManager } from './SoundManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameStateMachine')
@@ -36,13 +37,14 @@ export class GameStateMachine extends Component {
     }
     //idleState
     private idleStateEnter(asset?: JsonAsset){
-        
+        SoundManager.Instance.startTimer()
     }
     
     exitIdle(context: string){
         this.stateMachine.exitState(context)
     }
     private idleStateExit(context?: string){
+        SoundManager.Instance.stopTimer()
         this.stateMachine.setState(context)
     }
     //animationState
