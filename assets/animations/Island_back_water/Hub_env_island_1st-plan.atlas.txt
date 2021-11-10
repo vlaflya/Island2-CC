@@ -1,0 +1,104 @@
+
+Hub_env_island_1st-plan.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+drowned
+  rotate: 180
+  xy: 127, 134
+  size: 502, 302
+  orig: 502, 356
+  offset: 0, 0
+  index: -1
+drowned_island2
+  rotate: false
+  xy: 633, 75
+  size: 338, 80
+  orig: 350, 84
+  offset: 10, 2
+  index: -1
+island1
+  rotate: false
+  xy: 4, 407
+  size: 881, 462
+  orig: 881, 462
+  offset: 0, 0
+  index: -1
+island2
+  rotate: false
+  xy: 390, 378
+  size: 236, 98
+  orig: 293, 158
+  offset: 57, 60
+  index: -1
+stone-01
+  rotate: false
+  xy: 805, 736
+  size: 29, 23
+  orig: 33, 27
+  offset: 2, 2
+  index: -1
+stone-01-wave
+  rotate: false
+  xy: 750, 736
+  size: 51, 24
+  orig: 51, 24
+  offset: 0, 0
+  index: -1
+stone2
+  rotate: false
+  xy: 621, 794
+  size: 43, 42
+  orig: 47, 46
+  offset: 2, 2
+  index: -1
+stone3
+  rotate: false
+  xy: 657, 847
+  size: 24, 21
+  orig: 28, 25
+  offset: 2, 2
+  index: -1
+stones_waves2
+  rotate: false
+  xy: 577, 840
+  size: 77, 28
+  orig: 77, 28
+  offset: 0, 0
+  index: -1
+stones_waves3
+  rotate: false
+  xy: 571, 817
+  size: 46, 19
+  orig: 46, 19
+  offset: 0, 0
+  index: -1
+water-all-mid-02
+  rotate: false
+  xy: 630, 159
+  size: 390, 342
+  orig: 390, 342
+  offset: 0, 0
+  index: -1
+water_pattern
+  rotate: false
+  xy: 690, 763
+  size: 314, 106
+  orig: 343, 106
+  offset: 0, 0
+  index: -1
+waves-01
+  rotate: 180
+  xy: 4, 5
+  size: 394, 294
+  orig: 394, 294
+  offset: 0, 0
+  index: -1
+waves2
+  rotate: false
+  xy: 756, 525
+  size: 263, 47
+  orig: 263, 47
+  offset: 0, 0
+  index: -1
