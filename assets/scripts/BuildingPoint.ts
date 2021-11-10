@@ -36,6 +36,7 @@ export class BuildingPoint extends Component {
         let indexOf: number = st.indexOf("-")
         this.choiceCount = parseInt(st.slice(0, indexOf))
         this.choiceOption = parseInt(st.slice(indexOf + 1, st.length))
+        console.log("Choice option " + this.choiceOption);
         let bundle
         assetManager.loadBundle('Buildings', (err, load) => {
             bundle = load
@@ -51,12 +52,20 @@ export class BuildingPoint extends Component {
         this.node.children[0].children[0].getComponent(Building).setNextMarker()
     }
     public setChoice(){
-        ChoiceManage.Instance.createChoice(this.node.name, this)
+        ChoiceManage.Instance.createChoice(this.node.name)
     }
     public getCount(): number{
         return this.choiceCount
     }
+    public getOption(): number{
+        console.log(this.choiceOption)
+        return this.choiceOption
+    }
     public getMaxBuildCount(): number{
         return this.maxBuildCount
+    }
+    public isOnMaxCount(): boolean{
+        console.log("ChoiceCount " + this.choiceCount + " MaxBuild " + this.maxBuildCount)
+        return (this.choiceCount == (this.maxBuildCount - 1))
     }
 }

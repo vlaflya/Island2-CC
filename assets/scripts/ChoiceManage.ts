@@ -47,13 +47,13 @@ export class ChoiceManage extends Component {
         GameStateMachine.Instance.stateMachine.exitState();
     }
 
-    public createChoice(name: string, building: BuildingPoint){
+    public createChoice(name: string){
         if(!GameStateMachine.Instance.stateMachine.isCurrentState("idleState"))
             return
         
         SoundManager.Instance.setSound("island_marker", this.node)
         this.choosePhase = true
-        this.currentPoint = building
+        
         this.choiceWindow.active = true
         this.paperL.setAnimation(0, "1-Start", false)
         this.paperL.addAnimation(0, "2-Idle", true)
@@ -81,15 +81,25 @@ export class ChoiceManage extends Component {
     private randomOption1: number = 0
     private randomOption2: number = 0
     private randomCount: number = 0
-    public preload(name: string,  optionCount: number, afterBuild: boolean = false, maxBuildCount: number = 0){
+    public preload(name: string,  optionCount: number, building: BuildingPoint, afterBuild: boolean = false, maxBuildCount: number = 0){
         this.optionCount = optionCount
         this.afterBuild = afterBuild
+        this.currentPoint = building
         assetManager.loadBundle('Buildings', (err, load) => {
             this.bundle = load
             let st: string
             if(afterBuild){
+                console.log(this.currentPoint.getOption());
                 let r  = randomRangeInt(1, 3)
+                if(this.currentPoint.isOnMaxCount()){
+                    console.log("Current option " + this.currentPoint.getOption())
+                    if(this.currentPoint.getOption() == 1)
+                        r = 2
+                    if(this.currentPoint.getOption() == 2)
+                        r = 1
+                }
                 this.randomOption1 = r
+
                 st = name + "-" + (maxBuildCount - 1) + "-" + r;
                 console.log("option1 " + st)
                 if(this.option1.node.children.length > 0)
@@ -158,7 +168,7 @@ export class ChoiceManage extends Component {
         this.paperL.setAnimation(0, "4-Choice", false)
         this.paperR.setAnimation(0, "3-Down", false)
         if(this.afterBuild){
-            this.sendChoice(this.optionCount + "-" +  this.randomOption1)
+            this.sendChoice((this.currentPoint.getMaxBuildCount() - 1) + "-" +  this.randomOption1)
         }
         else
             this.sendChoice(this.optionCount + "-1")
