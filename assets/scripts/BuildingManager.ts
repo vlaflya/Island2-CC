@@ -92,7 +92,7 @@ export class BuildingManager extends Component {
             if(!hasSave)
                 point.init("0-1",point.node.name == this.sequenceNames[this.choiceCount - this.sequenceLength])
             if(point.node.name == this.sequenceNames[this.choiceCount - this.sequenceLength]){
-                ChoiceManage.Instance.preload(point.node.name, point.getCount(), true, point.getMaxBuildCount())
+                ChoiceManage.Instance.preload(point.node.name, point.getCount(), point, true, point.getMaxBuildCount())
             }
         });
     }
@@ -101,7 +101,7 @@ export class BuildingManager extends Component {
             if(!hasSave)
                 point.init("0-1",point.node.name == this.sequenceNames[this.choiceCount])
             if(point.node.name == this.sequenceNames[this.choiceCount]){
-                ChoiceManage.Instance.preload(point.node.name, point.getCount() + 1)
+                ChoiceManage.Instance.preload(point.node.name, point.getCount() + 1, point)
             }
         });
     }
