@@ -29,8 +29,8 @@ export class SoundManager extends Component {
         .delay(this.inactiveDelay)
         .call(() =>{
             this.tryPlayTutorial()
+            this.startTimer()
         })
-        .repeatForever()
         .start()
     }
     public stopTimer(){

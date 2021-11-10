@@ -8371,7 +8371,7 @@
         "__expectedType__": "cc.AudioClip"
       }
     ],
-    "inactiveDelay": 3,
+    "inactiveDelay": 10,
     "queueAsset": {
       "__uuid__": "4b15079d-e94f-4dca-b378-4be390fd37d5",
       "__expectedType__": "cc.JsonAsset"
