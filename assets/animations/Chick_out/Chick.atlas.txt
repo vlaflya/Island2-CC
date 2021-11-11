@@ -1,0 +1,62 @@
+
+Chick.png
+size: 128,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1chick_body
+  rotate: false
+  xy: 4, 113
+  size: 91, 83
+  orig: 91, 83
+  offset: 0, 0
+  index: -1
+1chick_eyes
+  rotate: false
+  xy: 80, 65
+  size: 18, 11
+  orig: 20, 13
+  offset: 1, 1
+  index: -1
+1chick_eyes_closed
+  rotate: true
+  xy: 93, 113
+  size: 18, 11
+  orig: 20, 13
+  offset: 1, 1
+  index: -1
+1chick_top
+  rotate: false
+  xy: 4, 173
+  size: 22, 21
+  orig: 24, 23
+  offset: 1, 1
+  index: -1
+1chick_topmouth
+  rotate: false
+  xy: 36, 118
+  size: 14, 16
+  orig: 16, 18
+  offset: 1, 1
+  index: -1
+2chick_body
+  rotate: 180
+  xy: 4, 41
+  size: 91, 83
+  orig: 91, 83
+  offset: 0, 0
+  index: -1
+2chick_top copy
+  rotate: false
+  xy: 68, 40
+  size: 22, 21
+  orig: 24, 23
+  offset: 1, 1
+  index: -1
+Layer 1
+  rotate: false
+  xy: 4, 5
+  size: 86, 31
+  orig: 88, 33
+  offset: 1, 1
+  index: -1

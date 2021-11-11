@@ -1,0 +1,76 @@
+
+Sheep_big.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 1
+  rotate: false
+  xy: 4, 24
+  size: 104, 47
+  orig: 106, 49
+  offset: 1, 1
+  index: -1
+Layer 2
+  rotate: false
+  xy: 76, 8
+  size: 28, 12
+  orig: 30, 14
+  offset: 1, 1
+  index: -1
+Layer 3
+  rotate: false
+  xy: 4, 7
+  size: 35, 13
+  orig: 37, 15
+  offset: 1, 1
+  index: -1
+sheep_body
+  rotate: false
+  xy: 4, 75
+  size: 96, 81
+  orig: 98, 83
+  offset: 1, 1
+  index: -1
+sheep_ears copy
+  rotate: true
+  xy: 104, 75
+  size: 65, 28
+  orig: 65, 28
+  offset: 0, 0
+  index: -1
+sheep_eyes
+  rotate: false
+  xy: 112, 12
+  size: 28, 18
+  orig: 30, 20
+  offset: 1, 1
+  index: -1
+sheep_head
+  rotate: false
+  xy: 112, 34
+  size: 36, 37
+  orig: 38, 39
+  offset: 1, 1
+  index: -1
+sheep_leg 1
+  rotate: true
+  xy: 43, 4
+  size: 16, 29
+  orig: 18, 31
+  offset: 1, 1
+  index: -1
+sheep_leg 2
+  rotate: false
+  xy: 136, 108
+  size: 18, 29
+  orig: 20, 31
+  offset: 1, 1
+  index: -1
+sheep_leg 3
+  rotate: false
+  xy: 136, 75
+  size: 19, 29
+  orig: 21, 31
+  offset: 1, 1
+  index: -1
