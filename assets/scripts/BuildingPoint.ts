@@ -36,7 +36,6 @@ export class BuildingPoint extends Component {
         let indexOf: number = st.indexOf("-")
         this.choiceCount = parseInt(st.slice(0, indexOf))
         this.choiceOption = parseInt(st.slice(indexOf + 1, st.length))
-        console.log("Choice option " + this.choiceOption);
         let bundle
         assetManager.loadBundle('Buildings', (err, load) => {
             bundle = load

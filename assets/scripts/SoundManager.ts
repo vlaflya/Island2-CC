@@ -97,9 +97,6 @@ export class SoundManager extends Component {
             st += read.queue[c]
         }
         this.queue.push(st)
-        this.queue.forEach(element => {
-            console.log(element);
-        });
     }
 
     public trySetLine(clip: AudioClip, node: Node): boolean{

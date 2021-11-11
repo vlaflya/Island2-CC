@@ -373,7 +373,7 @@
       "__expectedType__": "cc.Prefab"
     },
     "horizontal": false,
-    "markerOnTop": true,
+    "markerOnTop": false,
     "scale": 1,
     "shift": {
       "__type__": "cc.Vec2",

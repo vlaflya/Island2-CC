@@ -225,7 +225,7 @@
   },
   {
     "__type__": "cc.PrefabInstance",
-    "fileId": "4eV/Nsr6pCmYzTetx9ByeG",
+    "fileId": "5dqS1LBvxADrbRpvoEkDPP",
     "prefabRootNode": {
       "__id__": 1
     },
@@ -253,9 +253,14 @@
       "__id__": 12
     },
     "propertyPath": [
-      "_name"
+      "_lpos"
     ],
-    "value": "Marker"
+    "value": {
+      "__type__": "cc.Vec3",
+      "x": 506.924,
+      "y": -0.916,
+      "z": 0
+    }
   },
   {
     "__type__": "cc.TargetInfo",
@@ -269,14 +274,9 @@
       "__id__": 12
     },
     "propertyPath": [
-      "_lpos"
+      "_name"
     ],
-    "value": {
-      "__type__": "cc.Vec3",
-      "x": 522.148,
-      "y": -18.068,
-      "z": 0
-    }
+    "value": "Marker"
   },
   {
     "__type__": "CCPropertyOverrideInfo",

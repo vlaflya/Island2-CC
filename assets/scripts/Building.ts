@@ -117,8 +117,13 @@ export class Building extends Component {
 
     public init(isCurrentBuilding: boolean, point: BuildingPoint, build: boolean = false){
         this.point = point
-        // this.buildButton = this.node.getChildByName("Marker")
-        this.marker = this.node.getChildByName("Marker")
+        if(!this.marker)
+            this.marker = this.node.getChildByName("Marker")
+        if(!this.marker){
+            this.node.children.forEach(element => {
+                console.log(element.name);
+            });
+        }
         this.markerDefaultSize = new Vec3(this.marker.scale)
         if(isCurrentBuilding){
             this.buildButton = BuildingManager.Instance.getbutton().node
@@ -141,7 +146,7 @@ export class Building extends Component {
     }
     public setNextMarker(){
         this.buildButton = BuildingManager.Instance.getbutton().node
-        
+        this.marker = this.node.getChildByName("Marker")
         this.marker.active = true
         this.marker.getComponent(Marker).init(false)
         this.buttonScale()
@@ -163,6 +168,7 @@ export class Building extends Component {
             this.marker.getComponent(UITransform).width = this.buildButton.getComponent(UITransform).width
             this.marker.getComponent(UITransform).height = this.buildButton.getComponent(UITransform).height
             this.marker.worldPosition = this.buildButton.worldPosition
+            // this.marker.scale = new Vec3(this.buildButton.scale)
             this.marker.scale = new Vec3(this.node.scale.x * this.buildButton.scale.x, this.node.scale.y * this.buildButton.scale.y, 1)
         }
     }
@@ -177,6 +183,7 @@ export class Building extends Component {
         SoundManager.Instance.playUnavalible()
     }
     public fadeIn(){
+        this.marker = this.node.getChildByName("Marker")
         this.node.getComponent(UIOpacity).opacity = 255
         tween(this.node.getComponent(UIOpacity))
         .to(0.5, {opacity: 255})
@@ -196,6 +203,7 @@ export class Building extends Component {
     }
     public fadeOut(){
         SoundManager.Instance.setSound("island_construct2", this.node.parent)
+        console.log(this.marker.name)
         this.marker.setParent(this.node)
         this.marker.scale = new Vec3(this.markerDefaultSize)
         this.marker.worldPosition = this.buildButton.worldPosition

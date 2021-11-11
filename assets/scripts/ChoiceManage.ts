@@ -34,7 +34,6 @@ export class ChoiceManage extends Component {
     }
 
     public closeWindow(touch: Touch, event: EventTouch){
-        console.log("okes")
         if(!GameStateMachine.Instance.stateMachine.isCurrentState("choiseState"))
             return
         // this.paperL.timeScale = -1
@@ -91,7 +90,6 @@ export class ChoiceManage extends Component {
                 console.log(this.currentPoint.getOption());
                 let r  = randomRangeInt(1, 3)
                 if(this.currentPoint.isOnMaxCount()){
-                    console.log("Current option " + this.currentPoint.getOption())
                     if(this.currentPoint.getOption() == 1)
                         r = 2
                     if(this.currentPoint.getOption() == 2)
@@ -100,7 +98,6 @@ export class ChoiceManage extends Component {
                 this.randomOption1 = r
 
                 st = name + "-" + (maxBuildCount - 1) + "-" + r;
-                console.log("option1 " + st)
                 if(this.option1.node.children.length > 0)
                     this.option1.node.children[0].destroy()
                 this.loadPrefab(st, this.option1.node)
