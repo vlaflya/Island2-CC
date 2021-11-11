@@ -50,10 +50,9 @@ export class ChoiceManage extends Component {
     public createChoice(name: string){
         if(!GameStateMachine.Instance.stateMachine.isCurrentState("idleState"))
             return
-        
+        BuildingManager.Instance.hidePointer()
         SoundManager.Instance.setSound("island_marker", this.node)
         this.choosePhase = true
-        
         this.choiceWindow.active = true
         this.paperL.setAnimation(0, "1-Start", false)
         this.paperL.addAnimation(0, "2-Idle", true)

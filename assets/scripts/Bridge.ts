@@ -19,4 +19,7 @@ export class Bridge extends Component {
     public reload(){
         director.loadScene("scene")
     }
+    public save(){
+        
+    }
 }

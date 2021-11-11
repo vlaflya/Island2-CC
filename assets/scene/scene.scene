@@ -933,7 +933,7 @@
       "__uuid__": "644b92d1-f697-4830-af5a-d697f4c094ce",
       "__expectedType__": "cc.Prefab"
     },
-    "fileId": "",
+    "fileId": "c8ip2k0HFAirbr7ZqP2HH9",
     "instance": {
       "__id__": 20
     }
@@ -3144,7 +3144,7 @@
       "__uuid__": "085a4238-6274-443a-a7d6-a91b4fb83ff6",
       "__expectedType__": "cc.Prefab"
     },
-    "fileId": "",
+    "fileId": "9cVYHpLR1NlpZjhK7S3YhQ",
     "instance": {
       "__id__": 110
     }
@@ -3820,7 +3820,7 @@
       "__uuid__": "7733bb67-0341-4465-8891-703bfd7d43a0",
       "__expectedType__": "cc.Prefab"
     },
-    "fileId": "",
+    "fileId": "37bonZvxpHNY99SydR/GqU",
     "instance": {
       "__id__": 142
     }
@@ -5158,7 +5158,7 @@
       "__uuid__": "6c0a0fba-7ff6-4968-b609-4c2edd831438",
       "__expectedType__": "cc.Prefab"
     },
-    "fileId": "",
+    "fileId": "7eWKxYuSdDyosOtPJZoai8",
     "instance": {
       "__id__": 205
     }
@@ -5380,7 +5380,7 @@
         "__id__": 220
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 223
@@ -5389,8 +5389,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -0.439,
-      "y": -63.407,
+      "x": 7.453,
+      "y": -55.515,
       "z": 0
     },
     "_lrot": {
@@ -8713,29 +8713,29 @@
     ],
     "canBuildVoices": [
       {
-        "__uuid__": "c78489d6-f544-4d35-8b8e-e2eb330c9edf",
+        "__uuid__": "9727eaad-0898-48d0-8d47-fdaeb3757ec7",
         "__expectedType__": "cc.AudioClip"
       },
       {
-        "__uuid__": "473d2806-d769-4521-aaa3-eecbe66352a1",
+        "__uuid__": "5e71b84a-4e03-4dcf-8631-546878cf3ebf",
         "__expectedType__": "cc.AudioClip"
       },
       {
-        "__uuid__": "a7caf92c-ae76-41ba-b5d8-69bf51fd2e6c",
+        "__uuid__": "05add529-2170-496c-ba32-dc77bc6044ca",
         "__expectedType__": "cc.AudioClip"
       }
     ],
     "cantBuildVoices": [
       {
-        "__uuid__": "3bdcbf78-ce20-42b7-b620-22fb4cff79e9",
+        "__uuid__": "7c99aa98-7868-44e2-a9bf-5dd23410695e",
         "__expectedType__": "cc.AudioClip"
       },
       {
-        "__uuid__": "09ecbd13-cfb2-4f8c-adf9-9dfb3d70c175",
+        "__uuid__": "be0a29ce-5193-43b9-90ea-e50c9d63b32e",
         "__expectedType__": "cc.AudioClip"
       },
       {
-        "__uuid__": "2c2792d9-a67b-4e25-8a07-89f2f6b55a94",
+        "__uuid__": "a803b449-6e2c-403f-8b7c-93262ae75e23",
         "__expectedType__": "cc.AudioClip"
       }
     ],

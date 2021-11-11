@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, JsonAsset, assetManager, Prefab, path, Button, randomRangeInt, AudioClip } from 'cc';
+import { _decorator, Component, Node, JsonAsset, assetManager, Prefab, path, Button, randomRangeInt, AudioClip, tween } from 'cc';
 import { Building } from './Building';
 import { Bridge } from './Bridge';
 import { BuildingPoint } from './BuildingPoint';
@@ -28,6 +28,7 @@ export class BuildingManager extends Component {
 
     onLoad(){
         BuildingManager.Instance = this
+        this.tutorialPointer.active = false
     }
     public getbutton(): Button{
         return this.buildButton
@@ -53,8 +54,16 @@ export class BuildingManager extends Component {
             this.normalBuild(hasSave)
         }
         if(this.choiceCount == 0){
-            this.tutorialPointer.active = true
-            SoundManager.Instance.trySetLine(this.tutor1, this.node)
+            tween(this)
+            .call(() => {
+                SoundManager.Instance.trySetLine(this.tutor1, this.node)
+            })
+            .delay(7)
+            .call(() => {
+                this.tutorialPointer.active = true
+                SoundManager.Instance.trySetLine(this.tutor2, this.node)
+            })
+            .start()
         }
         else{
             this.tutorialPointer.active = false
@@ -108,9 +117,11 @@ export class BuildingManager extends Component {
             }
         });
     }
-    public madeChoise(){
+    public hidePointer(){
         if(this.tutorialPointer.active)
             this.tutorialPointer.active = false
+    }
+    public madeChoise(){
         var today = new Date();
         this.canBuild = false
         this.lastDate = today.toString()
