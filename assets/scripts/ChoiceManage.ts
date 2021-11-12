@@ -17,7 +17,6 @@ export class ChoiceManage extends Component {
     @property({type: sp.Skeleton}) paperR: sp.Skeleton
     @property({type: sp.Skeleton}) zebra: sp.Skeleton
     
-
     private currentPoint: BuildingPoint
     private optionCount: number = 0
     private bundle

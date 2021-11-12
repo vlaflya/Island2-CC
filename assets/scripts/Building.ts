@@ -18,6 +18,7 @@ export class Building extends Component {
     @property({type: Boolean}) markerOnTop = false
     @property({type: CCFloat}) scale: number = 1
     @property({type: Vec2}) shift = new Vec2(0,0)
+    private visuals: UITransform
     private Zebra: Node = null
     private zebraEndTarget: Node
     private shortPhrase: AudioSource = null
@@ -26,11 +27,19 @@ export class Building extends Component {
     private markerDefaultSize: Vec3
     private buildButton: Node = null
     private zebraStartPos: Vec3
-    private startScale: Vec3 = null
+    private startScale: Vec2 = null
     private point: BuildingPoint = null
 
     start(){
         this.node.getChildByName("visuals").on(Node.EventType.TOUCH_START, this.animate, this)
+        this.visuals = this.node.getChildByName("visuals").getComponent(UITransform)
+        this.visuals.anchorPoint = new Vec2(0.5, 0)
+        this.visuals.node.position = new Vec3(this.visuals.node.position.x, this.visuals.node.position.y - this.visuals.height/2)
+        if(this.visuals.node.children.length > 0){
+            this.visuals.node.children.forEach(element => {
+                element.position = new Vec3(element.position.x, element.position.y + this.visuals.height/2)
+            });
+        }
         if(this.point == null)
             return
         let name = this.node.parent.parent.name + "-" + this.point.getCount() + "-1"
@@ -39,7 +48,7 @@ export class Building extends Component {
         name = this.node.parent.parent.name + "-" + this.point.getCount() + "-2"
         if(this.node.getChildByName(name) != null && this.point != null)
             this.longPhrase = this.node.getChildByName(name).getComponent(AudioSource)
-        this.startScale = new Vec3(this.node.scale)
+        this.startScale = new Vec2(this.visuals.width, this.visuals.height)
         
     }
 
@@ -65,17 +74,18 @@ export class Building extends Component {
                 this.zebraStartPos = new Vec3(this.Zebra.worldPosition)
             }
         }
-        Tween.stopAllByTarget(this.node)
-        this.node.scale = this.startScale
-        tween(this.node)
+        Tween.stopAllByTarget(this.visuals)
+        this.visuals.width = this.startScale.x
+        this.visuals.height = this.startScale.y
+        tween(this.visuals)
         .call(() => {
             let prt: Node = instantiate(this.tapParticles)
             prt.parent = this.node
             let pos = new Vec3(touch.getUILocation().x, touch.getUILocation().y, 0)
             prt.worldPosition = pos
         })
-        .by(0.1, {scale: new Vec3(-0.05, -0.05, -0.07)}, {easing: 'bounceIn'})
-        .by(0.1, {scale: new Vec3(0.05, 0.05, 0.07)}, {easing: 'bounceOut'})
+        .by(0.1, {height: 100, width: 50}, {easing: 'bounceIn'})
+        .by(0.1, {height: -100, width: -50}, {easing: 'bounceOut'})
         .call(() => {
             if(this.Zebra != null && playAnimation && !this.animating){
                 this.animateZebra(true)
@@ -90,7 +100,6 @@ export class Building extends Component {
     animating: boolean = false
     animateZebra(canExit: boolean){
         this.animating = true
-        //this.Zebra.scale = new Vec3(0,0,0)
         let anim: sp.Skeleton = this.Zebra.getComponent(sp.Skeleton)
         if(!this.horizontal)
             anim.setAnimation(0, "Happy", false)
@@ -117,12 +126,8 @@ export class Building extends Component {
 
     public init(isCurrentBuilding: boolean, point: BuildingPoint, build: boolean = false){
         this.point = point
-        if(!this.marker)
-            this.marker = this.node.getChildByName("Marker")
         if(!this.marker){
-            this.node.children.forEach(element => {
-                console.log(element.name);
-            });
+            this.marker = this.node.getChildByName("Marker")
         }
         this.markerDefaultSize = new Vec3(this.marker.scale)
         if(isCurrentBuilding){
@@ -137,8 +142,10 @@ export class Building extends Component {
             this.buildButton.getComponent(Button).clickEvents.push(event)
             this.buildButton.getComponent(Button).interactable = true
             this.marker.getComponent(Marker).init(true)
-            this.buttonScale()
-            
+            this.buttonScale()   
+        }
+        else{
+            this.marker.getComponent(Marker).hide()
         }
         if(!build)
             return
@@ -203,17 +210,21 @@ export class Building extends Component {
     }
     public fadeOut(){
         SoundManager.Instance.setSound("island_construct2", this.node.parent)
-        console.log(this.marker.name)
+        if(!this.marker){
+            this.marker = this.node.getChildByName("Marker")
+        }
         this.marker.setParent(this.node)
         this.marker.scale = new Vec3(this.markerDefaultSize)
-        this.marker.worldPosition = this.buildButton.worldPosition
-
+        this.marker.worldPosition = BuildingManager.Instance.buildButton.node.worldPosition
         tween(this.node.getComponent(UIOpacity))
         .delay(1)
         .call(() =>{
             ParticleManager.Instance.setBuildParticles(this.node.parent.parent.children[1])
         })
         .to(1, {opacity: 0})
+        .call(() =>{
+            
+        })
         .start()
     }
     public setChoice(){

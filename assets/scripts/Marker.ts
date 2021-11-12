@@ -26,4 +26,8 @@ export class Marker extends Component {
             this.inactiveVisuals.active = true
         }
     }
+    public hide(){
+        this.activeVisuals.active = false
+        this.inactiveVisuals.active = false
+    }
 }

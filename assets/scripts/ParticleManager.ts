@@ -15,7 +15,7 @@ export class ParticleManager extends Component {
         console.log("oke")
         let prt = instantiate(this.afterBuildingParticles).getComponent(ParticleSystem2D)
         prt.node.parent = this.node
-        prt.node.worldPosition = transform.node.worldPosition
+        prt.node.worldPosition = new Vec3(transform.node.worldPosition.x, transform.node.worldPosition.y + transform.height/2)
         prt.posVar = new Vec2(transform.width / 5, transform.height/ 5)
         console.log(prt.posVar.toString())
     }

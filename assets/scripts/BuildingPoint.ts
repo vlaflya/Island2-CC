@@ -25,7 +25,6 @@ export class BuildingPoint extends Component {
     }
 
     public init(st: string, isCurrentBuilding: boolean, build: boolean = false){
-
         if(this.choiceCount != 0 && st == "0-1"){
              this.node.children[0].children[0].getComponent(Building).init(isCurrentBuilding, this, build)
              return
