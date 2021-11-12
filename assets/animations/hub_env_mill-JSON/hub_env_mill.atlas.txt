@@ -1,0 +1,13 @@
+
+hub_env_mill.png
+size: 64,64
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+mill-1
+  rotate: false
+  xy: 4, 5
+  size: 45, 45
+  orig: 87, 92
+  offset: 0, 41
+  index: -1

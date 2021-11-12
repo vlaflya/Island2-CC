@@ -1,0 +1,146 @@
+
+kitties.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1_eyes1
+  rotate: false
+  xy: 305, 27
+  size: 94, 30
+  orig: 94, 30
+  offset: 0, 0
+  index: -1
+1_eyes2
+  rotate: false
+  xy: 226, 11
+  size: 94, 14
+  orig: 94, 14
+  offset: 0, 0
+  index: -1
+1_eyes3
+  rotate: false
+  xy: 174, 67
+  size: 94, 20
+  orig: 94, 20
+  offset: 0, 0
+  index: -1
+1_m1
+  rotate: false
+  xy: 99, 2
+  size: 34, 12
+  orig: 34, 12
+  offset: 0, 0
+  index: -1
+1_m2
+  rotate: true
+  xy: 154, 66
+  size: 21, 18
+  orig: 21, 18
+  offset: 0, 0
+  index: -1
+1_m3
+  rotate: false
+  xy: 375, 60
+  size: 29, 33
+  orig: 29, 33
+  offset: 0, 0
+  index: -1
+1_m4
+  rotate: true
+  xy: 271, 52
+  size: 35, 32
+  orig: 35, 32
+  offset: 0, 0
+  index: -1
+1_nose
+  rotate: false
+  xy: 135, 4
+  size: 13, 10
+  orig: 15, 10
+  offset: 1, 0
+  index: -1
+1_tongue
+  rotate: true
+  xy: 195, 3
+  size: 22, 29
+  orig: 22, 29
+  offset: 0, 0
+  index: -1
+kitty_1_b1
+  rotate: false
+  xy: 2, 4
+  size: 76, 6
+  orig: 77, 6
+  offset: 0, 0
+  index: -1
+kitty_1_ear1
+  rotate: false
+  xy: 235, 30
+  size: 34, 35
+  orig: 34, 35
+  offset: 0, 0
+  index: -1
+kitty_1_ear2
+  rotate: false
+  xy: 195, 27
+  size: 38, 38
+  orig: 38, 38
+  offset: 0, 0
+  index: -1
+kitty_1_grabbin_tail
+  rotate: true
+  xy: 99, 16
+  size: 48, 94
+  orig: 48, 94
+  offset: 0, 0
+  index: -1
+kitty_1_head
+  rotate: true
+  xy: 154, 89
+  size: 165, 142
+  orig: 165, 142
+  offset: 0, 0
+  index: -1
+kitty_1_laying_body
+  rotate: true
+  xy: 2, 66
+  size: 188, 116
+  orig: 188, 116
+  offset: 0, 0
+  index: -1
+kitty_1_laying_tail
+  rotate: false
+  xy: 2, 12
+  size: 95, 52
+  orig: 95, 52
+  offset: 0, 0
+  index: -1
+kitty_1_sitting_body
+  rotate: true
+  xy: 298, 95
+  size: 159, 126
+  orig: 159, 126
+  offset: 0, 0
+  index: -1
+kitty_1_sitting_paw1
+  rotate: true
+  xy: 305, 59
+  size: 34, 33
+  orig: 34, 33
+  offset: 0, 0
+  index: -1
+kitty_1_sitting_paw2
+  rotate: true
+  xy: 340, 59
+  size: 34, 33
+  orig: 34, 33
+  offset: 0, 0
+  index: -1
+kitty_1_whiskers
+  rotate: true
+  xy: 120, 78
+  size: 176, 32
+  orig: 176, 32
+  offset: 0, 0
+  index: -1

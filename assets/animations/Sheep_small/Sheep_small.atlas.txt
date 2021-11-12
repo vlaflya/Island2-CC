@@ -1,0 +1,90 @@
+
+Sheep_small.png
+size: 256,64
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Layer 1
+  rotate: true
+  xy: 51, 2
+  size: 57, 26
+  orig: 59, 28
+  offset: 1, 1
+  index: -1
+Layer 3
+  rotate: true
+  xy: 120, 42
+  size: 17, 9
+  orig: 17, 9
+  offset: 0, 0
+  index: -1
+Layer 6
+  rotate: true
+  xy: 79, 34
+  size: 25, 17
+  orig: 25, 17
+  offset: 0, 0
+  index: -1
+Layer 7
+  rotate: true
+  xy: 79, 7
+  size: 25, 17
+  orig: 25, 17
+  offset: 0, 0
+  index: -1
+sheep_body
+  rotate: true
+  xy: 2, 5
+  size: 54, 47
+  orig: 54, 47
+  offset: 0, 0
+  index: -1
+sheep_browns
+  rotate: false
+  xy: 118, 7
+  size: 18, 9
+  orig: 18, 9
+  offset: 0, 0
+  index: -1
+sheep_ear 1
+  rotate: false
+  xy: 124, 18
+  size: 7, 10
+  orig: 7, 10
+  offset: 0, 0
+  index: -1
+sheep_ear 2
+  rotate: false
+  xy: 124, 30
+  size: 10, 10
+  orig: 10, 10
+  offset: 0, 0
+  index: -1
+sheep_head
+  rotate: false
+  xy: 98, 38
+  size: 20, 21
+  orig: 20, 22
+  offset: 0, 1
+  index: -1
+sheep_leg 1
+  rotate: false
+  xy: 112, 18
+  size: 10, 18
+  orig: 10, 18
+  offset: 0, 0
+  index: -1
+sheep_leg 2
+  rotate: true
+  xy: 98, 5
+  size: 11, 18
+  orig: 12, 18
+  offset: 0, 0
+  index: -1
+sheep_leg 3
+  rotate: false
+  xy: 98, 18
+  size: 12, 18
+  orig: 12, 18
+  offset: 0, 0
+  index: -1
