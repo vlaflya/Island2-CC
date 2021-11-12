@@ -98,8 +98,8 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -1.938,
-      "y": 1.062,
+      "x": -13.948,
+      "y": -7.946,
       "z": 0
     },
     "_lrot": {
@@ -539,7 +539,7 @@
     },
     "_type": 0,
     "_fillType": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -646,8 +646,8 @@
     ],
     "value": {
       "__type__": "cc.Vec3",
-      "x": -4.034,
-      "y": 108.2,
+      "x": -16.044,
+      "y": 93.188,
       "z": 0
     }
   },
@@ -911,7 +911,6 @@
       "__id__": 59
     },
     "interactable": true,
-    "buildButton": null,
     "tapParticles": {
       "__uuid__": "95c49bab-7123-4a38-97d7-d0d97086b326",
       "__expectedType__": "cc.Prefab"
@@ -921,9 +920,13 @@
       "__expectedType__": "cc.Prefab"
     },
     "horizontal": false,
-    "Zebra": null,
-    "shortPhrase": null,
-    "longPhrase": null,
+    "markerOnTop": false,
+    "scale": 1,
+    "shift": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
     "_id": ""
   },
   {

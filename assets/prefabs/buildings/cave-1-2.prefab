@@ -98,7 +98,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -4.216,
+      "x": -34.668,
       "y": 56.936,
       "z": 0
     },
@@ -790,7 +790,6 @@
       "__id__": 49
     },
     "interactable": true,
-    "buildButton": null,
     "tapParticles": {
       "__uuid__": "84faf4ec-b523-459d-9c6a-6264cc3db23a",
       "__expectedType__": "cc.Prefab"
@@ -800,9 +799,13 @@
       "__expectedType__": "cc.Prefab"
     },
     "horizontal": false,
-    "Zebra": null,
-    "shortPhrase": null,
-    "longPhrase": null,
+    "markerOnTop": false,
+    "scale": 1,
+    "shift": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
     "_id": ""
   },
   {
