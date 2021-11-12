@@ -6,182 +6,175 @@ filter: Linear,Linear
 repeat: none
 f-04
   rotate: false
-  xy: 4, 414
+  xy: 4, 394
   size: 34, 19
   orig: 42, 27
   offset: 4, 4
   index: -1
 f-part-blik
   rotate: false
-  xy: 254, 405
+  xy: 254, 385
   size: 20, 28
   orig: 20, 28
   offset: 0, 0
   index: -1
 f-part-dust
   rotate: false
-  xy: 238, 281
+  xy: 238, 261
   size: 49, 48
   orig: 57, 56
   offset: 4, 4
   index: -1
 f-part-wave
   rotate: false
-  xy: 4, 305
+  xy: 4, 285
   size: 74, 15
   orig: 82, 23
   offset: 4, 4
   index: -1
 fontain_0
   rotate: true
-  xy: 404, 200
+  xy: 404, 180
   size: 233, 113
   orig: 233, 113
   offset: 0, 0
   index: -1
 fontain_0_shadow
   rotate: true
-  xy: 291, 166
+  xy: 291, 146
   size: 267, 109
   orig: 267, 109
   offset: 0, 0
   index: -1
 fontain_1
   rotate: true
-  xy: 856, 200
+  xy: 754, 180
   size: 233, 85
   orig: 233, 85
   offset: 0, 0
   index: -1
 fontain_1_shadow
   rotate: false
-  xy: 4, 150
+  xy: 4, 130
   size: 267, 80
   orig: 267, 80
   offset: 0, 0
   index: -1
 fontain_2
-  rotate: 180
-  xy: 341, 86
+  rotate: false
+  xy: 600, 74
   size: 233, 102
   orig: 233, 102
   offset: 0, 0
   index: -1
 fontain_2_shadow
   rotate: true
-  xy: 945, 174
+  xy: 843, 154
   size: 259, 72
   orig: 267, 80
   offset: 4, 4
   index: -1
 fontain_2_water
-  rotate: 270
-  xy: 709, 25
+  rotate: true
+  xy: 535, 17
   size: 81, 125
   orig: 84, 135
   offset: 1, 8
   index: -1
 fontain_3_0
   rotate: true
-  xy: 521, 150
+  xy: 521, 130
   size: 283, 122
   orig: 283, 122
   offset: 0, 0
   index: -1
 fontain_3_1
   rotate: false
-  xy: 569, 57
+  xy: 225, 5
   size: 142, 137
   orig: 142, 137
   offset: 0, 0
   index: -1
 fontain_3_2
-  rotate: 180
-  xy: 276, 23
+  rotate: false
+  xy: 131, 50
   size: 95, 78
   orig: 123, 109
   offset: 0, 30
   index: -1
 fontain_3_L
-  rotate: true
-  xy: 374, 45
+  rotate: false
+  xy: 972, 58
   size: 36, 120
   orig: 39, 129
   offset: 3, 7
   index: -1
 fontain_3_R
   rotate: true
-  xy: 385, 23
+  xy: 620, 49
   size: 31, 120
   orig: 35, 124
   offset: 2, 2
   index: -1
 fontain_3_shadow
   rotate: false
-  xy: 4, 51
+  xy: 404, 81
   size: 134, 95
   orig: 134, 95
   offset: 0, 0
   index: -1
 fontain_4_0
-  rotate: false
-  xy: 665, 101
+  rotate: true
+  xy: 919, 180
   size: 233, 98
   orig: 233, 98
   offset: 0, 0
   index: -1
 fontain_4_1_1
   rotate: true
-  xy: 647, 200
+  xy: 647, 180
   size: 233, 103
   orig: 233, 103
   offset: 0, 0
   index: -1
 fontain_4_3
   rotate: true
-  xy: 894, 86
+  xy: 4, 42
   size: 84, 123
   orig: 84, 123
   offset: 0, 0
   index: -1
-fontain_4_shadow
-  rotate: true
-  xy: 754, 203
-  size: 230, 98
-  orig: 230, 98
-  offset: 0, 0
-  index: -1
 fontain_5_0
   rotate: false
-  xy: 4, 234
+  xy: 4, 214
   size: 283, 199
   orig: 283, 199
   offset: 0, 0
   index: -1
 fontain_5_1
-  rotate: 180
-  xy: 836, 5
+  rotate: false
+  xy: 742, 10
   size: 91, 87
   orig: 95, 104
   offset: 2, 9
   index: -1
 fontain_5_L
   rotate: true
-  xy: 136, 21
+  xy: 403, 48
   size: 30, 116
   orig: 35, 120
   offset: 3, 2
   index: -1
 fontain_5_R
-  rotate: true
-  xy: 496, 42
+  rotate: false
+  xy: 371, 23
   size: 29, 121
   orig: 33, 126
   offset: 2, 3
   index: -1
 fontain_5_shadow
   rotate: false
-  xy: 142, 54
+  xy: 837, 58
   size: 131, 92
   orig: 131, 92
   offset: 0, 0
