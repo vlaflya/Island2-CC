@@ -894,7 +894,7 @@
     },
     "horizontal": true,
     "markerOnTop": false,
-    "scale": 1,
+    "scale": 0.7,
     "shift": {
       "__type__": "cc.Vec2",
       "x": 0,
