@@ -1,0 +1,13 @@
+
+Ray-Sunlight.png
+size: 128,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Sun-Light-01
+  rotate: false
+  xy: 4, 4
+  size: 105, 114
+  orig: 105, 114
+  offset: 0, 0
+  index: -1

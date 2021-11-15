@@ -1,0 +1,62 @@
+
+albatros.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+albatros_flight_00000
+  rotate: true
+  xy: 265, 2
+  size: 110, 66
+  orig: 126, 135
+  offset: 0, 27
+  index: -1
+albatros_flight_00001
+  rotate: true
+  xy: 404, 7
+  size: 105, 64
+  orig: 126, 135
+  offset: 4, 28
+  index: -1
+albatros_flight_00002
+  rotate: true
+  xy: 526, 7
+  size: 105, 49
+  orig: 126, 135
+  offset: 6, 42
+  index: -1
+albatros_flight_00003
+  rotate: true
+  xy: 470, 9
+  size: 103, 54
+  orig: 126, 135
+  offset: 9, 45
+  index: -1
+albatros_flight_00004
+  rotate: true
+  xy: 333, 12
+  size: 100, 69
+  orig: 126, 135
+  offset: 15, 43
+  index: -1
+albatros_flight_00005
+  rotate: true
+  xy: 2, 8
+  size: 104, 88
+  orig: 126, 135
+  offset: 12, 43
+  index: -1
+albatros_flight_00006
+  rotate: true
+  xy: 178, 10
+  size: 102, 85
+  orig: 126, 135
+  offset: 15, 43
+  index: -1
+albatros_flight_00007
+  rotate: true
+  xy: 92, 6
+  size: 106, 84
+  orig: 126, 135
+  offset: 10, 43
+  index: -1
