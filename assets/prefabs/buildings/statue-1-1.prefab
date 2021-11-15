@@ -528,8 +528,8 @@
     ],
     "value": {
       "__type__": "cc.Vec3",
-      "x": 29.944,
-      "y": 35.518,
+      "x": -58.15,
+      "y": -77.592,
       "z": 0
     }
   },
@@ -786,6 +786,7 @@
       "__expectedType__": "cc.Prefab"
     },
     "horizontal": false,
+    "markerOnTop": false,
     "scale": 1,
     "shift": {
       "__type__": "cc.Vec2",
