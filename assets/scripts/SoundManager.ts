@@ -136,6 +136,7 @@ export class SoundManager extends Component {
         if(this.currentSource != null){
             if(this.currentSource.playing){
                 if(!this.zebraflag){
+                    this.playZebra()
                     this.setRandomZebraSound(node)
                     return true
                 }

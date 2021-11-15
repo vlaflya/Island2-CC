@@ -27,7 +27,7 @@ export class Building extends Component {
     private markerDefaultSize: Vec3
     private buildButton: Node = null
     private zebraStartPos: Vec3
-    private startScale: Vec2 = null
+    private startScale: Vec3 = null
     private point: BuildingPoint = null
 
     start(){
@@ -48,7 +48,8 @@ export class Building extends Component {
         name = this.node.parent.parent.name + "-" + this.point.getCount() + "-2"
         if(this.node.getChildByName(name) != null && this.point != null)
             this.longPhrase = this.node.getChildByName(name).getComponent(AudioSource)
-        this.startScale = new Vec2(this.visuals.width, this.visuals.height)
+        // this.startScale = new Vec3(this.visuals.width, this.visuals.height)
+        this.startScale = new Vec3(this.visuals.node.scale)
         
     }
 
@@ -74,18 +75,21 @@ export class Building extends Component {
                 this.zebraStartPos = new Vec3(this.Zebra.worldPosition)
             }
         }
-        Tween.stopAllByTarget(this.visuals)
-        this.visuals.width = this.startScale.x
-        this.visuals.height = this.startScale.y
-        tween(this.visuals)
+        Tween.stopAllByTarget(this.visuals.node)
+        // this.visuals.width = this.startScale.x
+        // this.visuals.height = this.startScale.y
+        this.visuals.node.scale = new Vec3(this.startScale)
+        tween(this.visuals.node)
         .call(() => {
             let prt: Node = instantiate(this.tapParticles)
             prt.parent = this.node
             let pos = new Vec3(touch.getUILocation().x, touch.getUILocation().y, 0)
             prt.worldPosition = pos
         })
-        .by(0.1, {height: 100, width: 50}, {easing: 'bounceIn'})
-        .by(0.1, {height: -100, width: -50}, {easing: 'bounceOut'})
+        // .by(0.1, {height: 100, width: 50}, {easing: 'bounceIn'})
+        // .by(0.1, {height: -100, width: -50}, {easing: 'bounceOut'})
+        .by(0.1, {scale: new Vec3(0.1,0.1,0)}, {easing: 'bounceIn'})
+        .by(0.1, {scale: new Vec3(-0.1,-0.1,0)}, {easing: 'bounceOut'})
         .call(() => {
             if(this.Zebra != null && playAnimation && !this.animating){
                 this.animateZebra(true)
@@ -239,10 +243,10 @@ export class Building extends Component {
             return
         Tween.stopAllByTarget(this.marker)
         this.marker.scale = new Vec3(this.markerDefaultSize)
-        let tweenAm = 0.1
+        let tweenAm = 0.05
         tween(this.marker)
-        .by(0.2, {scale: new Vec3(tweenAm,tweenAm)}, {easing: "sineIn"})
-        .by(0.2, {scale: new Vec3(-tweenAm,-tweenAm)}, {easing: "sineOut"})
+        .by(0.2, {scale: new Vec3(tweenAm,tweenAm), worldPosition: new Vec3(0,15,0)}, {easing: "sineIn"})
+        .by(0.2, {scale: new Vec3(-tweenAm,-tweenAm), worldPosition: new Vec3(0,-15,0)}, {easing: "sineOut"})
         .call(() => {
             if(GameStateMachine.Instance.stateMachine.isCurrentState("idleState"))
                 this.point.setChoice()
