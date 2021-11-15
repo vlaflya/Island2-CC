@@ -135,8 +135,10 @@ export class SoundManager extends Component {
         let playeAnim: boolean = false
         if(this.currentSource != null){
             if(this.currentSource.playing){
-                if(!this.zebraflag)
+                if(!this.zebraflag){
+                    this.setRandomZebraSound(node)
                     return true
+                }
             }
         }
         switch(st){
@@ -155,7 +157,7 @@ export class SoundManager extends Component {
             case("zebra"):{
                 if(!this.zebraflag){
                     this.playZebra()
-                    this.currentSource = this.setRandomZebraSound(node)
+                    this.setRandomZebraSound(node)
                     this.currentQueueCount++
                     playeAnim = true
                 }

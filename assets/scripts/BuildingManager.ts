@@ -58,7 +58,7 @@ export class BuildingManager extends Component {
             .call(() => {
                 SoundManager.Instance.trySetLine(this.tutor1, this.node)
             })
-            .delay(7)
+            .delay(8)
             .call(() => {
                 this.tutorialPointer.active = true
                 SoundManager.Instance.trySetLine(this.tutor2, this.node)
