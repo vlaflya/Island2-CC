@@ -28,7 +28,7 @@ export class BuildingManager extends Component {
 
     onLoad(){
         BuildingManager.Instance = this
-        this.tutorialPointer.active = false
+        // this.tutorialPointer.active = false
     }
     public getbutton(): Button{
         return this.buildButton

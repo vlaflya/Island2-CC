@@ -35,9 +35,6 @@ export class ChoiceManage extends Component {
     public closeWindow(touch: Touch, event: EventTouch){
         if(!GameStateMachine.Instance.stateMachine.isCurrentState("choiseState"))
             return
-        // this.paperL.timeScale = -1
-        // this.paperR.timeScale = -1
-        // this.zebra.timeScale = -1
         this.paperL.setAnimation(0, "4-Choice", false)
         this.paperR.setAnimation(0, "4-Choice", false)
         this.zebra.setAnimation(0, "4-Out", false)
@@ -82,6 +79,8 @@ export class ChoiceManage extends Component {
         this.optionCount = optionCount
         this.afterBuild = afterBuild
         this.currentPoint = building
+        this.option2.node.scale = new Vec3(2.5,2.5,2.5)
+        this.option1.node.scale = new Vec3(2.5,2.5,2.5)
         assetManager.loadBundle('Buildings', (err, load) => {
             this.bundle = load
             let st: string
@@ -162,6 +161,9 @@ export class ChoiceManage extends Component {
         this.choosePhase = false
         this.paperL.setAnimation(0, "4-Choice", false)
         this.paperR.setAnimation(0, "3-Down", false)
+        tween(this.option2.node)
+        .to(1, {scale: new Vec3(0,0,0)})
+        .start()
         if(this.afterBuild){
             this.sendChoice((this.currentPoint.getMaxBuildCount() - 1) + "-" +  this.randomOption1)
         }
@@ -176,6 +178,9 @@ export class ChoiceManage extends Component {
         this.choosePhase = false
         this.paperR.setAnimation(0, "4-Choice", false)
         this.paperL.setAnimation(0, "3-Down", false)
+        tween(this.option1.node)
+        .to(1, {scale: new Vec3(0,0,0)})
+        .start()
         if(this.afterBuild)
             this.sendChoice(this.randomCount + "-" + this.randomOption2)
         else

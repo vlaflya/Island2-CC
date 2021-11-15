@@ -363,7 +363,7 @@
     "__prefab": {
       "__id__": 21
     },
-    "interactable": false,
+    "interactable": true,
     "tapParticles": {
       "__uuid__": "84faf4ec-b523-459d-9c6a-6264cc3db23a",
       "__expectedType__": "cc.Prefab"

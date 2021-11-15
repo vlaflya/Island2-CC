@@ -129,7 +129,6 @@ export class Building extends Component {
         if(!this.marker){
             this.marker = this.node.getChildByName("Marker")
         }
-        this.markerDefaultSize = new Vec3(this.marker.scale)
         if(isCurrentBuilding){
             this.buildButton = BuildingManager.Instance.getbutton().node
             if(this.buildButton == null)
@@ -139,7 +138,7 @@ export class Building extends Component {
             event.target = this.node
             event.component = "Building"
             event.handler = "setChoice"
-            this.buildButton.getComponent(Button).clickEvents.push(event)
+            this.buildButton.getComponent(Button).clickEvents[0] = event
             this.buildButton.getComponent(Button).interactable = true
             this.marker.getComponent(Marker).init(true)
             this.buttonScale()   
@@ -156,21 +155,25 @@ export class Building extends Component {
         this.marker = this.node.getChildByName("Marker")
         this.marker.active = true
         this.marker.getComponent(Marker).init(false)
-        this.buttonScale()
+        // this.buttonScale()
         let event: EventHandler = new EventHandler()
         event.target = this.node
         event.component = "Building"
         event.handler = "cantBuild"
         this.buildButton.getComponent(Button).clickEvents = []
         this.buildButton.getComponent(Button).clickEvents.push(event)
+        this.buttonScale()
     }
-
+    scaledButton: boolean = false
+    startMarkerScale: Vec3
     private buttonScale(){
         this.buildButton.worldPosition = this.marker.worldPosition
         this.buildButton.getComponent(UITransform).width = this.marker.getComponent(UITransform).width
         this.buildButton.getComponent(UITransform).height = this.marker.getComponent(UITransform).height
         this.buildButton.scale = this.marker.scale
-        if(this.markerOnTop){
+        this.startMarkerScale = new Vec3(this.marker.scale)
+        if(this.markerOnTop && !this.scaledButton){
+            this.scaledButton = true
             this.marker.setParent(ChoiceManage.Instance.node)
             this.marker.getComponent(UITransform).width = this.buildButton.getComponent(UITransform).width
             this.marker.getComponent(UITransform).height = this.buildButton.getComponent(UITransform).height
@@ -178,14 +181,16 @@ export class Building extends Component {
             // this.marker.scale = new Vec3(this.buildButton.scale)
             this.marker.scale = new Vec3(this.node.scale.x * this.buildButton.scale.x, this.node.scale.y * this.buildButton.scale.y, 1)
         }
+        this.markerDefaultSize = new Vec3(this.marker.scale)
     }
 
     public cantBuild(){
         Tween.stopAllByTarget(this.marker)
         this.marker.scale = new Vec3(this.markerDefaultSize)
+        let tweenAm = this.marker.getWorldScale().x * 0.1
         tween(this.marker)
-        .by(0.2, {scale: new Vec3(0.1,0.1)}, {easing: "sineIn"})
-        .by(0.2, {scale: new Vec3(-0.1,-0.1)}, {easing: "sineOut"})
+        .by(0.2, {scale: new Vec3(tweenAm,tweenAm)}, {easing: "sineIn"})
+        .by(0.2, {scale: new Vec3(-tweenAm,-tweenAm)}, {easing: "sineOut"})
         .start()
         SoundManager.Instance.playUnavalible()
     }
@@ -213,9 +218,11 @@ export class Building extends Component {
         if(!this.marker){
             this.marker = this.node.getChildByName("Marker")
         }
-        this.marker.setParent(this.node)
-        this.marker.scale = new Vec3(this.markerDefaultSize)
-        this.marker.worldPosition = BuildingManager.Instance.buildButton.node.worldPosition
+        if(this.scaledButton){
+            this.marker.setParent(this.node)
+            this.marker.scale = new Vec3(0.3,0.3,0.3)
+            this.marker.worldPosition = BuildingManager.Instance.buildButton.node.worldPosition
+        }
         tween(this.node.getComponent(UIOpacity))
         .delay(1)
         .call(() =>{
@@ -231,10 +238,11 @@ export class Building extends Component {
         if(GameStateMachine.Instance.stateMachine.isCurrentState("choiseState"))
             return
         Tween.stopAllByTarget(this.marker)
-        // this.marker.scale = new Vec3(this.markerDefaultSize)
+        this.marker.scale = new Vec3(this.markerDefaultSize)
+        let tweenAm = 0.1
         tween(this.marker)
-        .by(0.2, {scale: new Vec3(0.1,0.1)}, {easing: "sineIn"})
-        .by(0.2, {scale: new Vec3(-0.1,-0.1)}, {easing: "sineOut"})
+        .by(0.2, {scale: new Vec3(tweenAm,tweenAm)}, {easing: "sineIn"})
+        .by(0.2, {scale: new Vec3(-tweenAm,-tweenAm)}, {easing: "sineOut"})
         .call(() => {
             if(GameStateMachine.Instance.stateMachine.isCurrentState("idleState"))
                 this.point.setChoice()

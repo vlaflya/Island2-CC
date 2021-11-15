@@ -118,13 +118,25 @@ export class SoundManager extends Component {
         this.currentSource = source.addComponent(AudioSource)
         this.setClip(source, clip)
     }
-    
+    private zebraflag = false
+    public playZebra(){
+        if(!this.zebraflag){
+            this.zebraflag = true
+            tween(this.node)
+            .delay(3)
+            .call(()=>{
+                this.zebraflag = false
+            })
+            .start()
+        }
+    }
     public getVoiceQueue(short: AudioSource, long: AudioSource, node: Node): boolean{
         let st = this.queue[this.currentQueueCount]
         let playeAnim: boolean = false
         if(this.currentSource != null){
             if(this.currentSource.playing){
-                return true
+                if(!this.zebraflag)
+                    return true
             }
         }
         switch(st){
@@ -141,15 +153,19 @@ export class SoundManager extends Component {
                 break
             }
             case("zebra"):{
-                this.currentSource = this.setRandomZebraSound(node)
-                this.currentQueueCount++
-                playeAnim = true
+                if(!this.zebraflag){
+                    this.playZebra()
+                    this.currentSource = this.setRandomZebraSound(node)
+                    this.currentQueueCount++
+                    playeAnim = true
+                }
                 break
             }
         }
         if(this.currentQueueCount == this.queue.length){
             this.currentQueueCount = 0
         }
+        console.log(playeAnim);
         return playeAnim
     }
     public playUniqLine(source: AudioSource){

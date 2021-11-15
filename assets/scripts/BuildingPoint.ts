@@ -30,7 +30,8 @@ export class BuildingPoint extends Component {
              return
         }
         for(let c = 0; c < this.node.children[0].children.length; c++){
-            this.node.children[0].children[0].destroy()
+            console.log(this.node.name)
+            this.node.children[0].children[c].destroy()
         }
         let indexOf: number = st.indexOf("-")
         this.choiceCount = parseInt(st.slice(0, indexOf))
