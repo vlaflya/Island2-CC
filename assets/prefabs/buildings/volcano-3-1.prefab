@@ -500,7 +500,7 @@
     "value": {
       "__type__": "cc.Vec3",
       "x": 3.714,
-      "y": 96.868,
+      "y": 129.35,
       "z": 0
     }
   },
@@ -782,8 +782,8 @@
     ],
     "value": {
       "__type__": "cc.Vec3",
-      "x": 81.458,
-      "y": -30.444,
+      "x": -118.432,
+      "y": 34.52,
       "z": 0
     }
   },
@@ -996,6 +996,7 @@
     "__type__": "cc.UITransform",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1
     },
@@ -1023,6 +1024,7 @@
     "__type__": "4716a2rHPBJl4k/8oG8hCzj",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1
     },
@@ -1057,6 +1059,7 @@
     "__type__": "cc.UIOpacity",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1
     },
